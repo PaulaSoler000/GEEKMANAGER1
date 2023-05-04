@@ -128,6 +128,9 @@ if (empty($_SESSION['user_id'])) {
                     <div id="option4" class="collapse-content">
                         <p>Contenido de la opción 4</p>
                     </div>
+                    <div id=".tipo-objeto" class="collapse-content">
+                        <p> HOLAAAA</p>   
+                </div>
                 </div>
 
             </div>
