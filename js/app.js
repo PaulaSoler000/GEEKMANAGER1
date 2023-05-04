@@ -15,7 +15,6 @@ hamburger.addEventListener('click', () => {
 });
 
 
-
 //modal editar
 const openModal2 = document.querySelector('.hero__cta2');
 const modal2 = document.querySelector('.modal2');

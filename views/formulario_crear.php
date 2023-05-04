@@ -56,72 +56,101 @@ if (empty($_SESSION['user_id'])) {
 
 
 
-    <h2 class="heading-secondary">Añadir</h2>
-    <?php
+        <h2 class="heading-secondary">Añadir</h2>
+        <?php
 
-    include("../controllers/modal_crear.php");
-    ?>
+        include("../controllers/modal_crear.php");
+        ?>
 
-    <div id="mensaje"></div>
-    <form action="" method="POST" id="modal_crear" enctype="multipart/form-data" autocomplete="off">
+        <div id="mensaje"></div>
+        <form action="" method="POST" id="modal_crear" enctype="multipart/form-data" autocomplete="off">
+
+            <div>
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="nombre_objeto" name="nombre_objeto" required><br>
+            </div>
+
+            <div>
+                <label for="tipo">Tipo de objeto:</label><br>
+                <select id="tipo_objeto" name="tipo_objeto" required>
+                    <option selected disabled value="">Elija tipo</option>
+                    <option name="tipo_objeto" id="manga" value="manga">Manga</option>
+                    <option name="tipo_objeto" id="libro" value="libro">Libro</option>
+                    <option name="tipo_objeto" id="videojuego" value="videojuego">Videojuego</option>
+                    <option name="tipo_objeto" id="figura" value="figura">Figura</option>
+                </select><br>
+            </div>
+
+            <div>
+                <label for="estado">Estado del objeto:</label><br>
+                <select id="estado_objeto" name="estado_objeto" required>
+                    <option selected disabled value="">Elija estado</option>
+                    <option name="estado_objeto" id="nuevo" value="nuevo">Nuevo</option>
+                    <option name="estado_objeto" id="seminuevo" value="seminuevo">Seminuevo</option>
+                    <option name="estado_objeto" id="usado" value="usado">Usado</option>
+                </select><br>
+            </div>
+
+            <div>
+                <label for="curso">Curso del objeto:</label><br>
+                <select id="curso" name="curso" required>
+                    <option selected disabled value="">Elija curso</option>
+                    <option name="curso" id="sin_empezar" value="sin_empezar">Sin empezar</option>
+                    <option name="curso" id="empezado" value="empezado">Empezado</option>
+                    <option name="curso" id="acabado" value="terminado">Terminado</option>
+                </select><br>
+            </div>
+
+            <div>
+                <label for="descripcion">Descripción:</label><br>
+                <textarea name="descripcion" id="descripcion" required></textarea>
+            </div>
+
+            <div>
+                <select id="mySelect">
+                    <option value="option1">Opción 1</option>
+                    <option value="option2">Opción 2</option>
+                    <option value="option3">Opción 3</option>
+                    <option value="option4">Opción 4</option>
+                </select>
+
+                <div id="collapse">
+                    <div id="option1" class="collapse-content">
+                        <label for="">opcion1</label><br>
+                        <input type="text">
+                    </div>
+                    <div id="option2" class="collapse-content">
+                        <p>Contenido de la opción 2</p>
+                    </div>
+                    <div id="option3" class="collapse-content">
+                        <p>Contenido de la opción 3</p>
+                    </div>
+                    <div id="option4" class="collapse-content">
+                        <p>Contenido de la opción 4</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div>
+                <label for="foto">Foto:</label><br>
+                <input type="file" name="foto" required>
+
+            </div>
+
+
+        </form>
 
         <div>
-            <label for="nombre">Nombre:</label><br>
-            <input type="text" id="nombre_objeto" name="nombre_objeto" required><br>
+            <button type="submit" class="boton" value="crear" name="crear_objeto" form="modal_crear">Añadir</button>
+            <a href="javascript:history.back()" class="button_gray">Cerrar</a>
         </div>
 
-        <div>
-            <label for="tipo">Tipo de objeto:</label><br>
-            <select id="tipo_objeto" name="tipo_objeto" required>
-                <option selected disabled value="">Elija tipo</option>
-                <option name="tipo_objeto" id="manga" value="manga">Manga</option>
-                <option name="tipo_objeto" id="libro" value="libro">Libro</option>
-                <option name="tipo_objeto" id="videojuego" value="videojuego">Videojuego</option>
-                <option name="tipo_objeto" id="figura" value="figura">Figura</option>
-            </select><br>
-        </div>
-
-        <div>
-            <label for="estado">Estado del objeto:</label><br>
-            <select id="estado_objeto" name="estado_objeto" required>
-                <option selected disabled value="">Elija estado</option>
-                <option name="estado_objeto" id="nuevo" value="nuevo">Nuevo</option>
-                <option name="estado_objeto" id="seminuevo" value="seminuevo">Seminuevo</option>
-                <option name="estado_objeto" id="usado" value="usado">Usado</option>
-            </select><br>
-        </div>
-
-        <div>
-            <label for="curso">Curso del objeto:</label><br>
-            <select id="curso" name="curso" required>
-                <option selected disabled value="">Elija curso</option>
-                <option name="curso" id="sin_empezar" value="sin_empezar">Sin empezar</option>
-                <option name="curso" id="empezado" value="empezado">Empezado</option>
-                <option name="curso" id="acabado" value="terminado">Terminado</option>
-            </select><br>
-        </div>
-
-        <div>
-            <label for="descripcion">Descripción:</label><br>
-            <textarea name="descripcion" id="descripcion" required></textarea>
-        </div>
-
-        <div>
-            <label for="foto">Foto:</label><br>
-            <input type="file" name="foto" required>
-
-        </div>
-
-
-    </form>
-
-    <div>
-        <button type="submit" class="boton" value="crear" name="crear_objeto" form="modal_crear">Añadir</button>
-        <a href="javascript:history.back()" class="button_gray">Cerrar</a>
     </div>
 
-    </div>
-
+    <script src="../js/opcion.js"></script>
 </body>
 
 </html>

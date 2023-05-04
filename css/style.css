@@ -728,6 +728,10 @@ img#foto_objeto_info {
 
 /*------------info----------*/
 
+.centrar_boton{
+  margin-top:2%;
+  margin-bottom: 2%;
+}
 
 .button {
   background-color: #0097B2;
@@ -828,5 +832,9 @@ img#foto_objeto_info {
 }
 
 #mensaje {
+  display: none;
+}
+
+.collapse-content {
   display: none;
 }

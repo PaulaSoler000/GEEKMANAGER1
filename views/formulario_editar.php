@@ -21,7 +21,7 @@ if (empty($_SESSION['user_id'])) {
     <link rel="stylesheet" href="../css/style.css">
     <!-- iconos fontawesome-->
     <script src="https://kit.fontawesome.com/4a0af06348.js" crossorigin="anonymous"></script>
-    <title>Formulario añadir</title>
+    <title>Formulario editar</title>
 
 </head>
 

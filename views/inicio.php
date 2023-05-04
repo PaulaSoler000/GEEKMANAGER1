@@ -76,9 +76,7 @@ if (empty($_SESSION['user_id'])) {
         </div>
     </nav>
 
-    <div>
-    <button class="hero__cta">Añadir</button>
-    <a class="button" href="#popup">I am a Popup</a>
+    <div class="centrar_boton">
     <a class="button" href="formulario_crear.php">formulario</a>
     </div>
 

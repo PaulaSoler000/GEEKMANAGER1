@@ -18,7 +18,7 @@ if (empty($_SESSION['user_id'])) {
     <link rel="stylesheet" href="../css/style.css">
     <!-- iconos fontawesome-->
     <script src="https://kit.fontawesome.com/4a0af06348.js" crossorigin="anonymous"></script>
-    <title>Manga</title>
+    <title>Mangas</title>
 </head>
 
 <body>
@@ -51,8 +51,9 @@ if (empty($_SESSION['user_id'])) {
 
 
 
-    <button class="hero__cta">Añadir</button>
+    <div class="centrar_boton">
     <a class="button" href="formulario_crear.php">formulario</a>
+    </div>
 
     <!--elementos-->
 
