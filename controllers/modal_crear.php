@@ -45,6 +45,18 @@ if (!empty($_POST["crear_objeto"])) {
     $curso = $_POST["curso"];
     $descripcion = $_POST["descripcion"];
 
+    //opciones
+    $edicion = $_POST["edicion"];
+    $editorial = $_POST["editorial"];
+    $volumen = $_POST["volumen"];
+    $autor = $_POST["autor"];
+    $genero = $_POST["genero"];
+    $plataforma = $_POST["plataforma"];
+    $compañia = $_POST["compañia"];
+    $altura = $_POST["altura"];
+    $marca = $_POST["marca"];
+
+
     // Verificar si el usuario existe en la tabla users
     $stmt = $conexion->prepare("SELECT id FROM users WHERE id = ?");
     $stmt->execute([$user_id]);
@@ -56,8 +68,20 @@ if (!empty($_POST["crear_objeto"])) {
     } else {
       ob_start();
       // El usuario existe en la tabla users, se puede realizar la inserción
-      $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)");
-      $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id]);
+      if ($tipo_objeto == "figura") {
+        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, altura, marca) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $altura, $marca]);
+      } else if ($tipo_objeto == "libro") {
+        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, volumen, editorial, autor, genero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $volumen, $editorial, $autor, $genero]);
+      } else if ($tipo_objeto == "videojuego") {
+        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, genero, plataforma, compañia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $genero, $plataforma, $compañia]);
+      }  else if ($tipo_objeto == "manga") {
+        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, editorial, volumen, autor, genero) VALUES (?, ?,?,?,?,?,?,?,?,?,?,?)");
+        $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $editorial, $volumen, $autor, $genero]);
+      }
+
 
       if ($sql) {
         echo 'Objeto añadido';

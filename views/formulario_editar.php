@@ -85,19 +85,6 @@ if (empty($_SESSION['user_id'])) {
                 </div>
 
                 <div>
-                    <label for="tipo">Tipo de objeto:</label><br>
-                    <select id="tipo_objeto" name="tipo_objeto" required>
-                        <option selected disabled value="">Elija tipo</option>
-
-                        <option value="manga" <?php if ($datos->tipo_objeto == "manga") echo "selected"; ?>>Manga</option>
-                        <option value="libro" <?php if ($datos->tipo_objeto == "libro") echo "selected"; ?>>Libro</option>
-                        <option value="videojuego" <?php if ($datos->tipo_objeto == "videojuego") echo "selected"; ?>>Videojuego</option>
-                        <option value="figura" <?php if ($datos->tipo_objeto == "figura") echo "selected"; ?>>Figura</option>
-
-                    </select><br>
-                </div>
-                
-                <div>
                     <label for="estado">Estado del objeto:</label><br>
                     <select id="estado_objeto" name="estado_objeto" required>
                         <option selected disabled value="">Elija estado</option>
@@ -124,8 +111,61 @@ if (empty($_SESSION['user_id'])) {
                 </div>
 
                 <div>
+                    <label for="tipo">Tipo de objeto:</label><br>
+                    <select id="tipo_objeto" name="tipo_objeto" required>
+                        <option selected disabled value="">Elija tipo</option>
+
+                        <option value="manga" <?php if ($datos->tipo_objeto == "manga") echo "selected"; ?>>Manga</option>
+                        <option value="libro" <?php if ($datos->tipo_objeto == "libro") echo "selected"; ?>>Libro</option>
+                        <option value="videojuego" <?php if ($datos->tipo_objeto == "videojuego") echo "selected"; ?>>Videojuego</option>
+                        <option value="figura" <?php if ($datos->tipo_objeto == "figura") echo "selected"; ?>>Figura</option>
+
+                    </select><br>
+
+                    <div id="edicionDiv" style="display:'' ;">
+                        <label for="edicion">Edición:</label><br>
+                        <input type="text" id="edicion" value="<?= $datos->edicion ?>" name="edicion"><br>
+                    </div>
+
+                    <div id="editorialDiv" style="display:'' ;">
+                        <label for="editorial">Editorial:</label><br>
+                        <input type="text" id="editorial" value="<?= $datos->editorial ?>" name="editorial"><br>
+                    </div>
+                    <div id="volumenDiv" style="display:'' ;">
+                        <label for="volumen">Volumen:</label><br>
+                        <input type="number" id="volumen" value="<?= $datos->volumen ?>" name="volumen"><br>
+                    </div>
+                    <div id="autorDiv" style="display:'' ;">
+                        <label for="autor">Autor:</label><br>
+                        <input type="text" id="autor" value="<?= $datos->autor ?>" name="autor"><br>
+                    </div>
+                    <div id="generoDiv" style="display:'' ;">
+                        <label for="genero">Género:</label><br>
+                        <input type="text" id="genero" value="<?= $datos->genero ?>" name="genero"><br>
+                    </div>
+                    <div id="plataformaDiv" style="display: none;">
+                        <label for="plataforma">Plataforma:</label><br>
+                        <input type="text" id="plataforma" value="<?= $datos->plataforma ?>" name="plataforma"><br>
+                    </div>
+                    <div id="compañiaDiv" style="display: none;">
+                        <label for="compañia">Compañía:</label><br>
+                        <input type="text" id="compañia" value="<?= $datos->compañia ?>" name="compañia"><br>
+
+                    </div>
+                    <div id="alturaDiv" style="display: none;">
+                        <label for="Altura">Altura:</label><br>
+                        <input type="text" id="altura" value="<?= $datos->altura ?>" name="altura"><br>
+                    </div>
+                    <div id="marcaDiv" style="display: none;">
+                        <label for="marca">Marca:</label><br>
+                        <input type="text" id="marca" value="<?= $datos->marca ?>" name="marca"><br>
+                    </div>
+                </div>
+
+
+                <div>
                     <label for="foto">Foto:</label><br>
-                    <input type="file" name="foto" value="<?php echo $datos ->foto; ?>">
+                    <input type="file" name="foto" value="<?php echo $datos->foto; ?>">
                 </div>
 
 
@@ -140,6 +180,7 @@ if (empty($_SESSION['user_id'])) {
 <?php }
 ?>
 
+<script src="../js/opcion.js"></script>
 </body>
 
 </html>

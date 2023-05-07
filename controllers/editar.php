@@ -17,34 +17,34 @@ $imagen = $datos->foto;
 
 
 
-  if (isset($_FILES["foto"])) {
-    $file = $_FILES["foto"];
-    $nombre = $file["name"];
-    $tipo = $file["type"];
-    $ruta_provisional = $file["tmp_name"];
-    $size = $file["size"];
+if (isset($_FILES["foto"])) {
+  $file = $_FILES["foto"];
+  $nombre = $file["name"];
+  $tipo = $file["type"];
+  $ruta_provisional = $file["tmp_name"];
+  $size = $file["size"];
 
-  
-    $carpeta = realpath("../fotos") . "/";
-    if ($tipo != 'image/jpg' && $tipo != 'image/JPG' && $tipo != 'image/jpeg' && $tipo != 'image/png' && $tipo != 'image/PNG') {
-      echo "Error, el archivo no es una imagen";
-    } else if ($size > 3 * 1024 * 1024) {
-      echo "Error, el tamaño máximo permitido es un 3MB";
+
+  $carpeta = realpath("../fotos") . "/";
+  if ($tipo != 'image/jpg' && $tipo != 'image/JPG' && $tipo != 'image/jpeg' && $tipo != 'image/png' && $tipo != 'image/PNG') {
+    echo "Error, el archivo no es una imagen";
+  } else if ($size > 3 * 1024 * 1024) {
+    echo "Error, el tamaño máximo permitido es un 3MB";
+  } else {
+    $dimensiones = getimagesize($ruta_provisional);
+    $witdh = $dimensiones[0];
+    $height = $dimensiones[1];
+    $src = $carpeta . $nombre;
+
+    move_uploaded_file($ruta_provisional, $src);
+
+    if (!file_exists($src)) {
+      echo "Error al subir la imagen";
     } else {
-      $dimensiones = getimagesize($ruta_provisional);
-      $witdh = $dimensiones[0];
-      $height = $dimensiones[1];
-      $src = $carpeta . $nombre;
-
-      move_uploaded_file($ruta_provisional, $src);
-
-      if (!file_exists($src)) {
-        echo "Error al subir la imagen";
-      } else {
-        $imagen = "../fotos/" . $nombre;
-      }
+      $imagen = "../fotos/" . $nombre;
     }
   }
+}
 
 
 
@@ -60,11 +60,35 @@ if (!empty($_POST["editar_objeto"])) {
     $curso = $_POST["curso"];
     $descripcion = $_POST["descripcion"];
 
+    //opciones
+    $edicion = $_POST["edicion"];
+    $editorial = $_POST["editorial"];
+    $volumen = $_POST["volumen"];
+    $autor = $_POST["autor"];
+    $genero = $_POST["genero"];
+    $plataforma = $_POST["plataforma"];
+    $compañia = $_POST["compañia"];
+    $altura = $_POST["altura"];
+    $marca = $_POST["marca"];
+
 
     ob_start();
     // El usuario existe en la tabla users, se puede realizar la inserción
-    $sql = $conexion->prepare("UPDATE inventario SET nombre_objeto=?, tipo_objeto=?, estado_objeto=?, curso=?, descripcion=?, foto=? WHERE id_objeto=?");
-    $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $id_objeto]);
+
+    if ($tipo_objeto == "figura") {
+      $sql = $conexion->prepare("UPDATE inventario SET nombre_objeto=?, tipo_objeto=?, estado_objeto=?, curso=?, descripcion=?, foto=?, edicion=?, altura=?, marca=? WHERE id_objeto=?");
+      $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $altura, $marca]);
+    } else if ($tipo_objeto == "libro") {
+      $sql = $conexion->prepare("UPDATE inventario SET nombre_objeto=?, tipo_objeto=?, estado_objeto=?, curso=?, descripcion=?, foto=?, edicion=?, volumen=?, editorial=?, autor=?, genero=? WHERE id_objeto=?");
+      $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $volumen, $editorial, $autor, $genero]);
+    } else if ($tipo_objeto == "videojuego") {
+      $sql = $conexion->prepare("UPDATE inventario SET nombre_objeto=?, tipo_objeto=?, estado_objeto=?, curso=?, descripcion=?, foto=?, edicion=?, genero=?, plataforma=?, compañia=? WHERE id_objeto=?");
+      $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $genero, $plataforma, $compañia]);
+    }  else if ($tipo_objeto == "manga") {
+      $sql = $conexion->prepare("UPDATE inventario SET nombre_objeto=?, tipo_objeto=?, estado_objeto=?, curso=?, descripcion=?, foto=?, edicion=?, volumen=?, editorial=?, autor=?, genero=? WHERE id_objeto=?");
+      $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $editorial, $volumen, $autor, $genero]);
+    }
+
 
     if ($sql) {
       echo 'Objeto añadido';
@@ -91,4 +115,5 @@ if (!empty($_POST["editar_objeto"])) {
     ob_flush();
   }
 }
+
 ?>

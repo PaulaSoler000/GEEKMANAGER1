@@ -70,16 +70,6 @@ if (empty($_SESSION['user_id'])) {
                 <input type="text" id="nombre_objeto" name="nombre_objeto" required><br>
             </div>
 
-            <div>
-                <label for="tipo">Tipo de objeto:</label><br>
-                <select id="tipo_objeto" name="tipo_objeto" required>
-                    <option selected disabled value="">Elija tipo</option>
-                    <option name="tipo_objeto" id="manga" value="manga">Manga</option>
-                    <option name="tipo_objeto" id="libro" value="libro">Libro</option>
-                    <option name="tipo_objeto" id="videojuego" value="videojuego">Videojuego</option>
-                    <option name="tipo_objeto" id="figura" value="figura">Figura</option>
-                </select><br>
-            </div>
 
             <div>
                 <label for="estado">Estado del objeto:</label><br>
@@ -106,35 +96,57 @@ if (empty($_SESSION['user_id'])) {
                 <textarea name="descripcion" id="descripcion" required></textarea>
             </div>
 
+
             <div>
-                <select id="mySelect">
-                    <option value="option1">Opción 1</option>
-                    <option value="option2">Opción 2</option>
-                    <option value="option3">Opción 3</option>
-                    <option value="option4">Opción 4</option>
-                </select>
+                <label for="tipo">Tipo de objeto:</label><br>
+                <select id="tipo_objeto" name="tipo_objeto" required>
+                    <option selected disabled value="">Elija tipo</option>
+                    <option name="tipo_objeto" id="manga" value="manga">Manga</option>
+                    <option name="tipo_objeto" id="libro" value="libro">Libro</option>
+                    <option name="tipo_objeto" id="videojuego" value="videojuego">Videojuego</option>
+                    <option name="tipo_objeto" id="figura" value="figura">Figura</option>
+                </select><br>
 
-                <div id="collapse">
-                    <div id="option1" class="collapse-content">
-                        <label for="">opcion1</label><br>
-                        <input type="text">
-                    </div>
-                    <div id="option2" class="collapse-content">
-                        <p>Contenido de la opción 2</p>
-                    </div>
-                    <div id="option3" class="collapse-content">
-                        <p>Contenido de la opción 3</p>
-                    </div>
-                    <div id="option4" class="collapse-content">
-                        <p>Contenido de la opción 4</p>
-                    </div>
-                    <div id=".tipo-objeto" class="collapse-content">
-                        <p> HOLAAAA</p>   
-                </div>
-                </div>
 
+                <div id="edicionDiv" style="display: none;">
+                    <label for="edicion">Edición:</label><br>
+                    <input type="text" id="edicion" name="edicion"><br>
+                </div>
+                
+                <div id="editorialDiv" style="display: none;">
+                    <label for="editorial">Editorial:</label><br>
+                    <input type="text" id="editorial" name="editorial"><br>
+                    </div>
+                <div id="volumenDiv" style="display: none;">
+                    <label for="volumen">Volumen:</label><br>
+                    <input type="number" id="volumen" name="volumen"><br>
+                    </div>
+                <div id="autorDiv" style="display: none;">
+                    <label for="autor">Autor:</label><br>
+                    <input type="text" id="autor" name="autor"><br>
+                    </div>
+                <div id="generoDiv" style="display: none;">    
+                    <label for="genero">Género:</label><br>
+                    <input type="text" id="genero" name="genero"><br>
+                    </div>
+                <div id="plataformaDiv" style="display: none;">
+                    <label for="plataforma">Plataforma:</label><br>
+                    <input type="text" id="plataforma" name="plataforma"><br>
+                    </div>
+                <div id="compañiaDiv" style="display: none;">
+                    <label for="compañia">Compañía:</label><br>
+                    <input type="text" id="compañia" name="compañia"><br>
+
+                    </div>
+                <div id="alturaDiv" style="display: none;">
+                    <label for="Altura">Altura:</label><br>
+                    <input type="text" id="altura" name="altura"><br>
+                    </div>
+                <div id="marcaDiv" style="display: none;">
+                    <label for="marca">Marca:</label><br>
+                    <input type="text" id="marca" name="marca"><br>
+                    </div>
             </div>
-
 
 
             <div>
