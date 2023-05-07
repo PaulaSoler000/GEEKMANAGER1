@@ -3,9 +3,10 @@ session_start();
 if (empty($_SESSION['user_id'])) {
     header('Location: ../index.php');
 }
-
 //$_SESSION['id_pagina'] = 0;
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +78,7 @@ if (empty($_SESSION['user_id'])) {
     </nav>
 
     <div class="centrar_boton">
-    <a class="button" href="formulario_crear.php">formulario</a>
+        <a class="button" href="formulario_crear.php">formulario</a>
     </div>
 
     <!--elementos-->
@@ -113,10 +114,10 @@ if (empty($_SESSION['user_id'])) {
 
                     <div class="editar">
                         <div class="icono">
-                            <a href="../controllers/eliminar.php?id_objeto=<?= $datos->id_objeto ?>" ><i class="fa-solid fa-trash-can"></i></a>
+                            <a href="../controllers/eliminar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-trash-can"></i></a>
                         </div>
                         <div class="icono">
-                            <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>'" ><i class="fa-solid fa-pencil"></i></a>
+                            <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>'"><i class="fa-solid fa-pencil"></i></a>
                         </div>
                         <div class="icono">
                             <a href="info.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-circle-info"></i></a>
@@ -286,6 +287,57 @@ if (empty($_SESSION['user_id'])) {
             </div>
         </div>
     </section>
+
+    <!--footer-->
+    <footer class="footer">
+        <div class="footer__addr logo">
+            <a href="inicio.php">
+                <img src="../img/logo_con_nombre.png">
+            </a>
+
+        </div>
+
+        <ul class="footer__nav">
+      
+
+            <li class="nav__item nav__item--extra">
+                <h2 class="nav__title">Technology</h2>
+
+                <ul class="nav__ul nav__ul--extra">
+                    <li>
+                        <a href="#">Inicio</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Mangas</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Libros</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Videojuegos</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Figuras</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            
+        </ul>
+
+        <div class="legal">
+            <p>Copyright &copy; 2023 GeekManager. All rights reserved.</p>
+
+            <div class="legal__links">
+            <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
 
 
     <script src="../js/app.js"></script>

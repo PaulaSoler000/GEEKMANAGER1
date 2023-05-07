@@ -21,6 +21,8 @@ if (empty($_SESSION['user_id'])) {
     <link rel="stylesheet" href="../css/style.css">
     <!-- iconos fontawesome-->
     <script src="https://kit.fontawesome.com/4a0af06348.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../node_modules/trumbowyg/dist/ui/trumbowyg.min.css">
     <title>Formulario editar</title>
 
 </head>
@@ -181,6 +183,12 @@ if (empty($_SESSION['user_id'])) {
 ?>
 
 <script src="../js/opcion.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../node_modules/trumbowyg/dist/trumbowyg.min.js"></script>
+<script>
+    $('#descripcion').trumbowyg();
+</script>
 </body>
 
 </html>
