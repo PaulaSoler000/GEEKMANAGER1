@@ -73,20 +73,20 @@ if (!empty($_POST["editar_objeto"])) {
 
 
     ob_start();
-    // El usuario existe en la tabla users, se puede realizar la inserción
+
 
     if ($tipo_objeto == "figura") {
       $sql = $conexion->prepare("UPDATE inventario SET nombre_objeto=?, tipo_objeto=?, estado_objeto=?, curso=?, descripcion=?, foto=?, edicion=?, altura=?, marca=? WHERE id_objeto=?");
-      $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $altura, $marca]);
+      $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen,  $edicion, $altura, $marca, $id_objeto]);
     } else if ($tipo_objeto == "libro") {
       $sql = $conexion->prepare("UPDATE inventario SET nombre_objeto=?, tipo_objeto=?, estado_objeto=?, curso=?, descripcion=?, foto=?, edicion=?, volumen=?, editorial=?, autor=?, genero=? WHERE id_objeto=?");
-      $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $volumen, $editorial, $autor, $genero]);
+      $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $edicion, $volumen, $editorial, $autor, $genero, $id_objeto]);
     } else if ($tipo_objeto == "videojuego") {
       $sql = $conexion->prepare("UPDATE inventario SET nombre_objeto=?, tipo_objeto=?, estado_objeto=?, curso=?, descripcion=?, foto=?, edicion=?, genero=?, plataforma=?, compañia=? WHERE id_objeto=?");
-      $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $genero, $plataforma, $compañia]);
+      $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $edicion, $genero, $plataforma, $compañia, $id_objeto]);
     }  else if ($tipo_objeto == "manga") {
-      $sql = $conexion->prepare("UPDATE inventario SET nombre_objeto=?, tipo_objeto=?, estado_objeto=?, curso=?, descripcion=?, foto=?, edicion=?, volumen=?, editorial=?, autor=?, genero=? WHERE id_objeto=?");
-      $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $editorial, $volumen, $autor, $genero]);
+      $sql = $conexion->prepare("UPDATE inventario SET nombre_objeto=?, tipo_objeto=?, estado_objeto=?, curso=?, descripcion=?, foto=?, edicion=?, editorial=?, volumen=?, autor=?, genero=? WHERE id_objeto=?");
+      $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $edicion, $editorial, $volumen, $autor, $genero, $id_objeto]);
     }
 
 

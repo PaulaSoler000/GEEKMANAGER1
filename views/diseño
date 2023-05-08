@@ -25,13 +25,13 @@ id PK
 ruta 
 
 TagsRelations (M:M)
-id PK AI
-inventario_id FK
-tags_id FK
+id PK AI                          
+inventario_id FK                            
+tags_id FK                                  
 
 Tags
 id PK AI
-nombre Varchar 255
+nombre Varchar 255 
 
 Listas
 id PK AI

@@ -20,6 +20,9 @@ if (empty($_SESSION['user_id'])) {
 
     <link rel="stylesheet" href="../node_modules/trumbowyg/dist/ui/trumbowyg.min.css">
 
+    <link href="../node_modules/tagify-master/dist/tagify.css" rel="stylesheet">
+
+
 </head>
 <title>Formulario añadir</title>
 
@@ -110,6 +113,8 @@ if (empty($_SESSION['user_id'])) {
                     <option name="tipo_objeto" id="figura" value="figura">Figura</option>
                 </select><br>
 
+                <input name="tags" placeholder="write some tags" value="predefined tags here">
+
 
                 <div id="edicionDiv" style="display: none;">
                     <label for="edicion">Edición:</label><br>
@@ -170,10 +175,17 @@ if (empty($_SESSION['user_id'])) {
     <script src="../js/opcion.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../node_modules/tagify-master/dist/jQuery.tagify.min.js"></script>
+
     <script src="../node_modules/trumbowyg/dist/trumbowyg.min.js"></script>
     <script>
         $('#descripcion').trumbowyg();
 
+        $('[name=tags]').tagify();
+
+        $('[name=tags]').tagify({
+            duplicates: false
+        });
     </script>
 
 </body>
