@@ -1,0 +1,73 @@
+Tabla usuario
+id PK
+email -> Para entrar en la plataforma, NOT NULL REQUIRED
+ususario ->  Opciones o obligatorios, lo que tu prefieras
+nombre ->  Opciones o obligatorios, lo que tu prefieras
+apellidos -> Opciones o obligatorios, lo que tu prefieras
+contraseña -> PERFECTO
+
+Tabla inventario
+id PK
+usuario_id FK NOT NULL REQUIRED
+nombre varchar 255
+tipo FK (Listas)
+estado FK (Listas)
+curso FK (Listas)
+descripcion TEXT
+foto FK (Multimedia)
+entidad_nombre (varchar) -> manga
+entidad_id FK -> 5
+
+(SELECT * FROM inventario inv inner join inv.entidad_nombre (manga) rel on rel.id = inv.entidad_id )
+
+Tabla Multimedia
+id PK
+ruta 
+
+TagsRelations (M:M)
+id PK AI
+inventario_id FK
+tags_id FK
+
+Tags
+id PK AI
+nombre Varchar 255
+
+Listas
+id PK AI
+clasificacion -> inventario_tipo  / inventario_curso / inventario_estado
+nombre MANGA
+flag_activa True
+(CREATE TABLE listas )
+
+CREATE TABLE listas (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+clasificacion VARCHAR(255) NOT NULL,
+nombre VARCHAR(255) NOT NULL,
+flag_activa BOOLEAN DEFAULT=TRUE
+)
+
+
+(SELECT id, nombre from listas where categoria = 'inventario_tipo' and flag_activa is true)
+-> Manga
+-> Videojuegos
+-> Peliculas
+
+Flujo
+
+PIncho en Formulario
+
+Elijo Tipo Videojuego
+
+Relleno TODA LA INFORMACION
+
+le doy a enviar
+
+Por detras, el backend va  a  comprobar el tipo, lo primero de todo
+Será videojuegos
+Hará un insert en la tabla videojuego
+Dile a a bbdd que te devuelva el ultimo id creado en la tabla videojuegos
+te lo guardas para hacer, finalmente, un insert en la tabla Inventario. 
+Ahora vamos a guardar los datos de inventario -> 
+EN el campo de entidad_nombre pondrás videojuego
+En el campo entidad_id el pk que se acaba de insertar en la tabla videojuegos.
