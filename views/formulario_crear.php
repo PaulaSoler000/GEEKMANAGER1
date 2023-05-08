@@ -20,7 +20,7 @@ if (empty($_SESSION['user_id'])) {
 
     <link rel="stylesheet" href="../node_modules/trumbowyg/dist/ui/trumbowyg.min.css">
 
-    <link href="../node_modules/tagify-master/dist/tagify.css" rel="stylesheet">
+    <!--<link href="../node_modules/tagify-master/dist/tagify.css" rel="stylesheet">-->
 
 
 </head>
@@ -113,7 +113,25 @@ if (empty($_SESSION['user_id'])) {
                     <option name="tipo_objeto" id="figura" value="figura">Figura</option>
                 </select><br>
 
-                <input name="tags" placeholder="write some tags" value="predefined tags here">
+
+                <div class="tag_wraper">
+                    <div class="tag_titulo">
+                    <h4>Tagas</h4>
+                    </div>
+                    <div vlass="tag_content">
+                        <p>Presiona enter o añade una coma para cerrar un tag</p>
+                        <div class="tag-box">
+                            <ul>
+                                <inptu type="text">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class ="tag_detalles">
+                            <p><span>10</span> tag restantes</p>
+                            <button>Limpiar</button>
+                    </div>
+                </div>
+
 
 
                 <div id="edicionDiv" style="display: none;">
@@ -173,19 +191,20 @@ if (empty($_SESSION['user_id'])) {
     </div>
 
     <script src="../js/opcion.js"></script>
+    <script src="../js/tags.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="../node_modules/tagify-master/dist/jQuery.tagify.min.js"></script>
+    <!--<script src="../node_modules/tagify-master/dist/jQuery.tagify.min.js"></script>-->
 
     <script src="../node_modules/trumbowyg/dist/trumbowyg.min.js"></script>
     <script>
         $('#descripcion').trumbowyg();
 
-        $('[name=tags]').tagify();
+        //$('[name=tags]').tagify();
 
-        $('[name=tags]').tagify({
-            duplicates: false
-        });
+        //$('[name=tags]').tagify({
+        //    duplicates: false
+        //});
     </script>
 
 </body>

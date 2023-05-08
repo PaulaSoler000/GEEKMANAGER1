@@ -66,7 +66,7 @@ if (empty($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
         $db = new Database();
         $conexion = $db->connect();
-        
+
         $id_objeto = $_GET["id_objeto"];
         $sql = $conexion->prepare("SELECT * FROM inventario WHERE id_objeto = $id_objeto");
         $sql->execute();
@@ -92,9 +92,36 @@ if (empty($_SESSION['user_id'])) {
 
 
                 <div class="etiqueta_info">
-                    <span class="badge_info"><?= $datos->tipo_objeto ?></span>
-                    <span class="badge_info"><?= $datos->estado_objeto ?></span>
-                    <span class="badge_info"><?= $datos->curso ?></span>
+                    <span class="badge"><?= $datos->tipo_objeto ?></span>
+                    <span class="badge"><?= $datos->estado_objeto ?></span>
+                    <span class="badge"><?= $datos->curso ?></span>
+                    <?php if ($datos->edicion != "" && $datos->edicion != null) : ?>
+                        <span class="badge"><?= $datos->edicion ?></span>
+                    <?php endif; ?>
+                    <?php if ($datos->editorial != "") : ?>
+                        <span class="badge"><?= $datos->editorial ?></span>
+                    <?php endif; ?>
+                    <?php if ($datos->volumen != 0) : ?>
+                        <span class="badge"><?= $datos->volumen ?></span>
+                    <?php endif; ?>
+                    <?php if ($datos->autor != "") : ?>
+                        <span class="badge"><?= $datos->autor ?></span>
+                    <?php endif; ?>
+                    <?php if ($datos->genero != "") : ?>
+                        <span class="badge"><?= $datos->genero ?></span>
+                    <?php endif; ?>
+                    <?php if ($datos->altura != "") : ?>
+                        <span class="badge"><?= $datos->altura ?></span>
+                    <?php endif; ?>
+                    <?php if ($datos->marca != "") : ?>
+                        <span class="badge"><?= $datos->marca ?></span>
+                    <?php endif; ?>
+                    <?php if ($datos->plataforma != "") : ?>
+                        <span class="badge"><?= $datos->plataforma ?></span>
+                    <?php endif; ?>
+                    <?php if ($datos->compañia != "" && $datos->compañia != null) : ?>
+                        <span class="badge"><?= $datos->compañia ?></span>
+                    <?php endif; ?>
                 </div>
 
 
@@ -108,7 +135,7 @@ if (empty($_SESSION['user_id'])) {
                         <a href="../controllers/eliminar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-trash-can"></i></a>
                     </div>
                     <div class="icono_info">
-                        <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>'" ><i class="fa-solid fa-pencil"></i></a>
+                        <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>'"><i class="fa-solid fa-pencil"></i></a>
                     </div>
 
 

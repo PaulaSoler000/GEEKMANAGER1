@@ -71,3 +71,11 @@ te lo guardas para hacer, finalmente, un insert en la tabla Inventario.
 Ahora vamos a guardar los datos de inventario -> 
 EN el campo de entidad_nombre pondrás videojuego
 En el campo entidad_id el pk que se acaba de insertar en la tabla videojuegos.
+
+
+
+Select * From inventario 
+
+if()
+where nombre = "?" and 
+

@@ -104,12 +104,39 @@ if (empty($_SESSION['user_id'])) {
                     </div>
                     <p><?= $datos->nombre_objeto ?></p>
 
+
+
                     <div class="etiquetas">
                         <span class="badge"><?= $datos->tipo_objeto ?></span>
                         <span class="badge"><?= $datos->estado_objeto ?></span>
                         <span class="badge"><?= $datos->curso ?></span>
-
-
+                        <?php if ($datos->edicion != "" && $datos->edicion != null) : ?>
+                            <span class="badge"><?= $datos->edicion ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->editorial != "") : ?>
+                            <span class="badge"><?= $datos->editorial ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->volumen != 0) : ?>
+                            <span class="badge"><?= $datos->volumen ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->autor != "") : ?>
+                            <span class="badge"><?= $datos->autor ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->genero != "") : ?>
+                            <span class="badge"><?= $datos->genero ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->altura != "") : ?>
+                            <span class="badge"><?= $datos->altura ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->marca != "") : ?>
+                            <span class="badge"><?= $datos->marca ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->plataforma != "") : ?>
+                            <span class="badge"><?= $datos->plataforma ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->compañia != "" && $datos->compañia != null) : ?>
+                            <span class="badge"><?= $datos->compañia ?></span>
+                        <?php endif; ?>
                     </div>
 
                     <div class="editar">
@@ -298,7 +325,7 @@ if (empty($_SESSION['user_id'])) {
         </div>
 
         <ul class="footer__nav">
-      
+
 
             <li class="nav__item nav__item--extra">
                 <h2 class="nav__title">Technology</h2>
@@ -327,14 +354,14 @@ if (empty($_SESSION['user_id'])) {
                 </ul>
             </li>
 
-            
+
         </ul>
 
         <div class="legal">
             <p>Copyright &copy; 2023 GeekManager. All rights reserved.</p>
 
             <div class="legal__links">
-            <a href="#">Privacy Policy</a>
+                <a href="#">Privacy Policy</a>
             </div>
         </div>
     </footer>
