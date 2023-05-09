@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Work+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&family=Work+Sans&display=swap");
 
 * {
   padding: 0;
@@ -15,11 +15,10 @@ body {
   text-align: center;
   /*margin-top: 2%;
       margin-bottom: 5%;*/
-  background-color: #DFF5F8;
+  background-color: #dff5f8;
 }
 
 /*--------------nav-----------*/
-
 
 nav {
   height: 6rem;
@@ -29,9 +28,7 @@ nav {
   display: flex;
   justify-content: center;
   position: relative;
-
 }
-
 
 /* Estilo del logo */
 
@@ -46,12 +43,12 @@ nav {
 /* Estilo de los links */
 
 .nav-links li.active a {
-  color: #0097B2;
+  color: #0097b2;
 }
 
 .nav-links {
   display: flex;
-  list-style: none; 
+  list-style: none;
   width: 50vw;
   padding: 0 0.7vw;
   justify-content: space-evenly;
@@ -68,7 +65,7 @@ nav {
 }
 
 .nav-links li a:hover {
-  color: #0097B2 ;
+  color: #0097b2;
 }
 .nav-links li {
   position: relative;
@@ -78,14 +75,15 @@ nav {
   height: 2rem;
 }
 
-.nav-links li a:before, .nav-links li a:after {
-  content: '';
+.nav-links li a:before,
+.nav-links li a:after {
+  content: "";
   position: absolute;
   width: 0%;
   height: 1px;
   top: 50%;
   margin-top: -0.5px;
-  background-color: #0097B2 ;
+  background-color: #0097b2;
 }
 
 .nav-links li a:before {
@@ -94,12 +92,12 @@ nav {
 
 .nav-links li a:after {
   right: 2.5px;
-  background: #0097B2;
+  background: #0097b2;
   transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .nav-links li a:hover:before {
-  background: #0097B2;
+  background: #0097b2;
   width: 100%;
   transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -114,8 +112,8 @@ nav {
 
 .hamburger div {
   width: 30px;
-  height:3px;
-  background: #0097B2;
+  height: 3px;
+  background: #0097b2;
   margin: 5px;
   transition: all 0.3s ease;
 }
@@ -127,91 +125,89 @@ nav {
 /* Responsive del nav */
 @media screen and (max-width: 1250px) {
   nav {
-      position: relative;
-  
+    position: relative;
   }
 
   .hamburger {
-      display:block;
-      position: absolute;
-      cursor: pointer;
-      right: 5%;
-      top: 50%;
-      transform: translate(-5%, -50%);
-      z-index: 2;
-      transition: all 0.7s ease;
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    right: 5%;
+    top: 50%;
+    transform: translate(-5%, -50%);
+    z-index: 2;
+    transition: all 0.7s ease;
   }
 
   .nav-links {
-      position: absolute;
-      background: white;
-      height: 100vh;
-      width: 100%;
-      flex-direction: column;
-      clip-path: circle(50px at 90% -20%);
-      -webkit-clip-path: circle(50px at 90% -10%);
-      transition: all 1s ease-out;
-      pointer-events: none;
+    position: absolute;
+    background: white;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    clip-path: circle(50px at 90% -20%);
+    -webkit-clip-path: circle(50px at 90% -10%);
+    transition: all 1s ease-out;
+    pointer-events: none;
   }
 
   .nav-links.open {
-      clip-path: circle(1000px at 90% -10%);
-      -webkit-clip-path: circle(1000px at 90% -10%);
-      pointer-events: all;
+    clip-path: circle(1000px at 90% -10%);
+    -webkit-clip-path: circle(1000px at 90% -10%);
+    pointer-events: all;
   }
 
   .nav-links li {
-      opacity: 0;
+    opacity: 0;
   }
 
   .nav-links li:nth-child(1) {
-      transition: all 0.5s ease 0.2s;
+    transition: all 0.5s ease 0.2s;
   }
 
   .nav-links li:nth-child(2) {
-      transition: all 0.5s ease 0.4s;
+    transition: all 0.5s ease 0.4s;
   }
 
   .nav-links li:nth-child(3) {
-      transition: all 0.5s ease 0.6s;
+    transition: all 0.5s ease 0.6s;
   }
 
   .nav-links li:nth-child(4) {
-      transition: all 0.5s ease 0.7s;
+    transition: all 0.5s ease 0.7s;
   }
 
   .nav-links li:nth-child(5) {
-      transition: all 0.5s ease 0.8s;
+    transition: all 0.5s ease 0.8s;
   }
 
   .nav-links li:nth-child(6) {
-      transition: all 0.5s ease 0.9s;
-      margin: 0;
+    transition: all 0.5s ease 0.9s;
+    margin: 0;
   }
 
   .nav-links li:nth-child(7) {
-      transition: all 0.5s ease 1s;
-      margin: 0;
+    transition: all 0.5s ease 1s;
+    margin: 0;
   }
 
   li.fade {
-      opacity: 1;
+    opacity: 1;
   }
-
 }
 
 /* Animaciones del menu hamburguesa */
 .toggle .line1 {
-  transform: rotate(-45deg) translate(-5px,6px);
+  transform: rotate(-45deg) translate(-5px, 6px);
 }
 
 .toggle .line2 {
   transition: all 0.7s ease;
-  width:0;
+  width: 0;
 }
 
-.toggle .line3{
-  transform: rotate(45deg) translate(-5px,-6px);
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
 }
 /* Animaciones del menu hamburguesa */
 .toggle .line1 {
@@ -231,8 +227,8 @@ nav {
 
 /*-----boton---------------*/
 button {
-  background-color: #0097B2;
-  border: 1px solid #0097B2;
+  background-color: #0097b2;
+  border: 1px solid #0097b2;
   color: white;
   padding: 15px;
   padding-left: 40px;
@@ -244,20 +240,18 @@ button {
   margin-bottom: 2%;
 }
 
-
 button:hover {
-  color: #0097B2;
+  color: #0097b2;
   border-radius: 12px;
   background-color: white;
-  border: 1px solid #0097B2;
+  border: 1px solid #0097b2;
   cursor: pointer;
-  transition: all .30s ease;
+  transition: all 0.3s ease;
 }
 
 /*-----boton---------------*/
 
 /*-----modal añadir---------------*/
-
 
 .modal {
   position: fixed;
@@ -269,17 +263,17 @@ button:hover {
   display: flex;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .2s .2s;
+  transition: opacity 0.2s 0.2s;
   --transform: translateY(-100vh);
-  --transition: transform .2s;
+  --transition: transform 0.2s;
 }
 
 .modal--show {
   opacity: 1;
   pointer-events: unset;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
   --transform: translateY(0);
-  --transition: transform .2s .2s;
+  --transition: transform 0.2s 0.2s;
 }
 
 .modal__container {
@@ -306,7 +300,6 @@ button:hover {
   margin-bottom: 10px;
 }
 
-
 .modal__close {
   background-color: white;
   border: 1px solid #818181;
@@ -327,7 +320,7 @@ button:hover {
   background-color: #818181;
   border: 1px solid #818181;
   cursor: pointer;
-  transition: all .30s ease;
+  transition: all 0.3s ease;
 }
 
 /* Responsive de modales */
@@ -370,7 +363,6 @@ button:hover {
   }
 }
 
-
 /*-----modal añadir---------------*/
 
 /*-----modal editar---------------*/
@@ -385,9 +377,9 @@ button:hover {
   display: flex;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .2s .2s;
+  transition: opacity 0.2s 0.2s;
   --transform: translateY(-100vh);
-  --transition: transform .2s;
+  --transition: transform 0.2s;
 }
 
 .modal__close2 {
@@ -410,15 +402,15 @@ button:hover {
   background-color: #818181;
   border: 1px solid #818181;
   cursor: pointer;
-  transition: all .30s ease;
+  transition: all 0.3s ease;
 }
 
 .modal--show2 {
   opacity: 1;
   pointer-events: unset;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
   --transform: translateY(0);
-  --transition: transform .2s .2s;
+  --transition: transform 0.2s 0.2s;
 }
 
 /*-----modal editar---------------*/
@@ -435,9 +427,9 @@ button:hover {
   display: flex;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .2s .2s;
+  transition: opacity 0.2s 0.2s;
   --transform: translateY(-100vh);
-  --transition: transform .2s;
+  --transition: transform 0.2s;
 }
 
 .modal__close3 {
@@ -460,15 +452,15 @@ button:hover {
   background-color: #818181;
   border: 1px solid #818181;
   cursor: pointer;
-  transition: all .30s ease;
+  transition: all 0.3s ease;
 }
 
 .modal--show3 {
   opacity: 1;
   pointer-events: unset;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
   --transform: translateY(0);
-  --transition: transform .2s .2s;
+  --transition: transform 0.2s 0.2s;
 }
 
 .eliminar {
@@ -485,24 +477,22 @@ button:hover {
   margin-bottom: 2%;
 }
 
-
 .eliminar:hover {
   color: #b20000;
   border-radius: 12px;
   background-color: white;
   border: 1px solid #b20000;
   cursor: pointer;
-  transition: all .30s ease;
+  transition: all 0.3s ease;
 }
 
 /*-----modal eliminar---------------*/
-
 
 /*-----formulario añadir---------------*/
 
 input {
   font-size: large;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   margin-top: 2%;
   margin-bottom: 3%;
   padding: 0 10px;
@@ -511,12 +501,11 @@ input {
   border: 1px solid #ccc;
   height: 35px;
   width: 80%;
-
 }
 
 select {
   font-size: large;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   margin-top: 2%;
   margin-bottom: 3%;
   padding: 0 10px;
@@ -525,13 +514,11 @@ select {
   border: 1px solid #ccc;
   height: 35px;
   width: 80%;
-
 }
 
 textarea {
-
   font-size: large;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   margin-top: 2%;
   margin-bottom: 3%;
   padding: 0 10px;
@@ -540,14 +527,9 @@ textarea {
   border: 1px solid #ccc;
   width: 80%;
   height: 50px;
-
 }
 
-
-
-
 /*-----formulario añadir---------------*/
-
 
 /*------------elementos----------*/
 
@@ -572,7 +554,6 @@ textarea {
   border-radius: 10px;
 }
 
-
 a img#foto_objeto {
   margin: 1rem;
 
@@ -595,7 +576,7 @@ a img#foto_objeto {
   margin-bottom: 5%;
 
   border-radius: 0.25rem;
-  background-color: #0097B2;
+  background-color: #0097b2;
   color: #fff;
 }
 
@@ -609,18 +590,14 @@ a img#foto_objeto {
 .icono {
   margin: 15px;
   font-size: 130%;
-
-
 }
 
 /* Responsive de elementos, letras más grandes */
 
 @media screen and (max-width: 1020px) {
-
   .icono {
     margin: 15px;
     font-size: 155%;
-
   }
 
   .contenedor {
@@ -648,11 +625,10 @@ a img#foto_objeto {
     margin-bottom: 5%;
 
     border-radius: 0.25rem;
-    background-color: #0097B2;
+    background-color: #0097b2;
     color: #fff;
   }
 }
-
 
 /*------------elementos----------*/
 
@@ -670,7 +646,6 @@ a img#foto_objeto {
   justify-content: center;
   align-items: stretch;
   text-align: center;
-
 }
 
 img#foto_objeto_info {
@@ -685,7 +660,6 @@ img#foto_objeto_info {
 .icono_info {
   margin: 20px;
   font-size: 150%;
-
 }
 
 .badge_info {
@@ -702,14 +676,13 @@ img#foto_objeto_info {
   margin-bottom: 5%;
 
   border-radius: 0.25rem;
-  background-color: #0097B2;
+  background-color: #0097b2;
   color: #fff;
 }
 
 /* Responsive del contenedor blanco */
 
 @media screen and (max-width: 1250px) {
-
   .contBlan {
     border-radius: 18px;
     background-color: white;
@@ -723,21 +696,19 @@ img#foto_objeto_info {
     justify-content: center;
     align-items: center;
     text-align: center;
-
   }
-
 }
 
 /*------------info----------*/
 
-.centrar_boton{
-  margin-top:2%;
+.centrar_boton {
+  margin-top: 2%;
   margin-bottom: 2%;
 }
 
 .button {
-  background-color: #0097B2;
-  border: 1px solid #0097B2;
+  background-color: #0097b2;
+  border: 1px solid #0097b2;
   color: white;
   padding: 15px;
   padding-left: 40px;
@@ -749,14 +720,13 @@ img#foto_objeto_info {
   margin-bottom: 2%;
 }
 
-
 .button:hover {
-  color: #0097B2;
+  color: #0097b2;
   border-radius: 12px;
   background-color: white;
-  border: 1px solid #0097B2;
+  border: 1px solid #0097b2;
   cursor: pointer;
-  transition: all .30s ease;
+  transition: all 0.3s ease;
 }
 
 .button_gray {
@@ -779,7 +749,7 @@ img#foto_objeto_info {
   background-color: #818181;
   border: 1px solid #818181;
   cursor: pointer;
-  transition: all .30s ease;
+  transition: all 0.3s ease;
 }
 
 .popup {
@@ -788,7 +758,7 @@ img#foto_objeto_info {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, .8);
+  background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
   z-index: 9999;
   opacity: 0;
@@ -807,7 +777,7 @@ img#foto_objeto_info {
   width: 45%;
   padding: 20px;
   background-color: white;
-  box-shadow: 0 2rem 4rem rgba(0, 0, 0, .2);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -830,7 +800,6 @@ img#foto_objeto_info {
   justify-content: center;
   align-items: stretch;
   text-align: center;
-
 }
 
 #mensaje {
@@ -838,7 +807,6 @@ img#foto_objeto_info {
 }
 
 /*------------footer-----------------*/
-
 
 .footer {
   display: flex;
@@ -850,7 +818,7 @@ img#foto_objeto_info {
 }
 
 .footer > * {
-  flex:  1 100%;
+  flex: 1 100%;
 }
 
 .footer__addr {
@@ -859,7 +827,7 @@ img#foto_objeto_info {
 }
 
 .footer__logo {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   font-weight: 400;
   text-transform: lowercase;
   font-size: 1.5rem;
@@ -911,7 +879,7 @@ img#foto_objeto_info {
 
 .footer__nav {
   display: flex;
-	flex-flow: row wrap;
+  flex-flow: row wrap;
 }
 
 .footer__nav > * {
@@ -933,7 +901,7 @@ img#foto_objeto_info {
   flex-wrap: wrap;
   color: #999;
 }
-  
+
 .legal__links {
   display: flex;
   align-items: center;
@@ -953,18 +921,56 @@ img#foto_objeto_info {
   .footer__nav > * {
     flex: 1;
   }
-  
+
   .nav__item--extra {
     flex-grow: 2;
   }
-  
+
   .footer__addr {
     flex: 1 0px;
   }
-  
+
   .footer__nav {
     flex: 2 0px;
   }
 }
 
 /*------------footer-----------------*/
+
+.btn-flotante {
+  font-size: 16px; /* Cambiar el tamaño de la tipografia */
+  text-transform: uppercase; /* Texto en mayusculas */
+  font-weight: bold; /* Fuente en negrita o bold */
+  color: #ffffff; /* Color del texto */
+  border-radius: 50px; /* Borde del boton */
+  letter-spacing: 2px; /* Espacio entre letras */
+  background-color: #0097b2; /* Color de fondo */
+  padding: 18px 30px; /* Relleno del boton */
+  position: sticky;
+  border: 1px solid #0097b2;
+  bottom: 40px;
+  right: 40px;
+  transition: all 300ms ease 0ms;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  z-index: 99;
+}
+.btn-flotante:hover {
+  background-color: white; /* Color de fondo al pasar el cursor */
+  border: 1px solid #0097b2;
+  color: #0097b2;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-7px);
+}
+@media only screen and (max-width: 600px) {
+  .btn-flotante {
+    font-size: 14px;
+    padding: 12px 20px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+.paginas {
+  margin-top: 2%;
+  margin-bottom: 5%;
+}

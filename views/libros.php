@@ -3,6 +3,33 @@ session_start();
 if (empty($_SESSION['user_id'])) {
     header('Location: ../index.php');
 }
+
+require_once('../controllers/database.php');
+$user_id = $_SESSION['user_id'];
+$db = new Database();
+$conexion = $db->connect();
+
+
+$registros_por_pagina = 9; /* CON ESTA VARIABLE INDICAREMOS EL NUMERO DE REGISTROS QUE QUEREMOS POR PAGINA*/
+$estoy_en_pagina = 1;/* CON ESTA VARIABLE INDICAREMOS la pagina en la que estamos*/
+
+if (isset($_GET["pagina"])) {
+    $estoy_en_pagina = $_GET["pagina"];
+}
+
+$empezar_desde = ($estoy_en_pagina - 1) * $registros_por_pagina;
+
+
+$sql_total = "SELECT * FROM inventario WHERE tipo_objeto='libro'";
+/* CON LIMIT 0,3 HACE LA SELECCION DE LOS 3 REGISTROS QUE HAY EMPEZANDO DESDE EL REGISTRO 0*/
+$sql = $conexion->prepare($sql_total);
+$sql->execute(array());
+
+$num_filas = $sql->rowCount(); /* nos dice el numero de registros del reusulset*/
+$total_paginas = ceil($num_filas / $registros_por_pagina);
+
+$sql = $conexion->prepare("SELECT * FROM inventario WHERE id_usuario = ? and tipo_objeto='libro' ORDER BY id_objeto DESC LIMIT $empezar_desde,$registros_por_pagina");
+$sql->execute([$user_id]);
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +77,7 @@ if (empty($_SESSION['user_id'])) {
     </nav>
 
     <div class="centrar_boton">
-    <a class="button" href="formulario_crear.php">formulario</a>
+
     </div>
 
     <!--elementos-->
@@ -61,13 +88,7 @@ if (empty($_SESSION['user_id'])) {
 
 
             <?php
-            require_once('../controllers/database.php');
-            $user_id = $_SESSION['user_id'];
-            $db = new Database();
-            $conexion = $db->connect();
 
-            $sql = $conexion->prepare("SELECT * FROM inventario WHERE id_usuario = ? and tipo_objeto='libro' ORDER BY id_objeto DESC");
-            $sql->execute([$user_id]);
             while ($datos = $sql->fetchObject()) { ?>
 
 
@@ -77,12 +98,40 @@ if (empty($_SESSION['user_id'])) {
                     </div>
                     <p><?= $datos->nombre_objeto ?></p>
 
+
+
                     <div class="etiquetas">
+                        <span class="badge"><?= $datos->año_salida ?></span>
                         <span class="badge"><?= $datos->tipo_objeto ?></span>
                         <span class="badge"><?= $datos->estado_objeto ?></span>
                         <span class="badge"><?= $datos->curso ?></span>
-
-
+                        <?php if ($datos->edicion != "" && $datos->edicion != null) : ?>
+                            <span class="badge"><?= $datos->edicion ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->editorial != "") : ?>
+                            <span class="badge"><?= $datos->editorial ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->volumen != 0) : ?>
+                            <span class="badge"><?= $datos->volumen ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->autor != "") : ?>
+                            <span class="badge"><?= $datos->autor ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->genero != "") : ?>
+                            <span class="badge"><?= $datos->genero ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->altura != "") : ?>
+                            <span class="badge"><?= $datos->altura ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->marca != "") : ?>
+                            <span class="badge"><?= $datos->marca ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->plataforma != "") : ?>
+                            <span class="badge"><?= $datos->plataforma ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->compañia != "" && $datos->compañia != null) : ?>
+                            <span class="badge"><?= $datos->compañia ?></span>
+                        <?php endif; ?>
                     </div>
 
                     <div class="editar">
@@ -90,7 +139,7 @@ if (empty($_SESSION['user_id'])) {
                             <a href="../controllers/eliminar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-trash-can"></i></a>
                         </div>
                         <div class="icono">
-                            <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>'" ><i class="fa-solid fa-pencil"></i></a>
+                            <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>'"><i class="fa-solid fa-pencil"></i></a>
                         </div>
                         <div class="icono">
                             <a href="info.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-circle-info"></i></a>
@@ -251,6 +300,73 @@ if (empty($_SESSION['user_id'])) {
             </div>
         </div>
     </section>
+
+    <div class="paginas">
+        <?php
+        for ($i = 1; $i <= $total_paginas; $i++) {
+            /*		echo "<a href='?pagina=" . $i . "'>" . $i . "</a>  ";*/
+            echo "<a href='inicio.php?pagina=" . $i . "'>" . $i . "</a>  ";
+        }
+
+        ?>
+    </div>
+
+    <a href="formulario_crear.php" class="btn-flotante">Añadir</a>
+
+    <!--footer-->
+    <footer class="footer">
+        <div class="footer__addr logo">
+            <a href="inicio.php">
+                <img src="../img/logo_con_nombre.png">
+            </a>
+
+        </div>
+
+        <ul class="footer__nav">
+
+
+            <li class="nav__item nav__item--extra">
+                <h2 class="nav__title">Technology</h2>
+
+                <ul class="nav__ul nav__ul--extra">
+                    <li>
+                        <a href="#">Inicio</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Mangas</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Libros</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Videojuegos</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Figuras</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+        </ul>
+
+
+
+        <div class="legal">
+            <p>Copyright &copy; 2023 GeekManager. All rights reserved.</p>
+
+            <div class="legal__links">
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+
 
 
     <script src="../js/app.js"></script>

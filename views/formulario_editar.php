@@ -87,6 +87,12 @@ if (empty($_SESSION['user_id'])) {
                 </div>
 
                 <div>
+                    <label for="año">Año salida:</label><br>
+                    <input type="number" id="año_salida" value="<?= $datos->año_salida ?>" name="año_salida" required><br>
+                </div>
+
+
+                <div>
                     <label for="estado">Estado del objeto:</label><br>
                     <select id="estado_objeto" name="estado_objeto" required>
                         <option selected disabled value="">Elija estado</option>
@@ -115,7 +121,6 @@ if (empty($_SESSION['user_id'])) {
                 <div>
                     <label for="tipo">Tipo de objeto:</label><br>
                     <select id="tipo_objeto" name="tipo_objeto" required>
-                        <option selected disabled value="">Elija tipo</option>
 
                         <option value="manga" <?php if ($datos->tipo_objeto == "manga") echo "selected"; ?>>Manga</option>
                         <option value="libro" <?php if ($datos->tipo_objeto == "libro") echo "selected"; ?>>Libro</option>
@@ -124,24 +129,24 @@ if (empty($_SESSION['user_id'])) {
 
                     </select><br>
 
-                    <div id="edicionDiv" style="display:'' ;">
+                    <div id="edicionDiv" style="display:'none' ;">
                         <label for="edicion">Edición:</label><br>
                         <input type="text" id="edicion" value="<?= $datos->edicion ?>" name="edicion"><br>
                     </div>
 
-                    <div id="editorialDiv" style="display:'' ;">
+                    <div id="editorialDiv" style="display:'none' ;">
                         <label for="editorial">Editorial:</label><br>
                         <input type="text" id="editorial" value="<?= $datos->editorial ?>" name="editorial"><br>
                     </div>
-                    <div id="volumenDiv" style="display:'' ;">
+                    <div id="volumenDiv" style="display:'none' ;">
                         <label for="volumen">Volumen:</label><br>
                         <input type="number" id="volumen" value="<?= $datos->volumen ?>" name="volumen"><br>
                     </div>
-                    <div id="autorDiv" style="display:'' ;">
+                    <div id="autorDiv" style="display:'none' ;">
                         <label for="autor">Autor:</label><br>
                         <input type="text" id="autor" value="<?= $datos->autor ?>" name="autor"><br>
                     </div>
-                    <div id="generoDiv" style="display:'' ;">
+                    <div id="generoDiv" style="display:'none' ;">
                         <label for="genero">Género:</label><br>
                         <input type="text" id="genero" value="<?= $datos->genero ?>" name="genero"><br>
                     </div>

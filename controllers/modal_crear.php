@@ -36,10 +36,11 @@ if (isset($_FILES["foto"])) {
 }
 
 if (!empty($_POST["crear_objeto"])) {
-  if (empty($_POST["nombre_objeto"]) or empty($_POST["tipo_objeto"]) or empty($_POST["curso"]) or empty($_POST["descripcion"])) {
+  if (empty($_POST["nombre_objeto"]) or empty($_POST["año_salida"]) or empty($_POST["tipo_objeto"]) or empty($_POST["curso"]) or empty($_POST["descripcion"])) {
     echo '<div>Uno de los campos esta vacio</div>';
   } else {
     $nombre_objeto = $_POST["nombre_objeto"];
+    $año_salida = $_POST["año_salida"];
     $tipo_objeto = $_POST["tipo_objeto"];
     $estado_objeto = $_POST["estado_objeto"];
     $curso = $_POST["curso"];
@@ -71,17 +72,17 @@ if (!empty($_POST["crear_objeto"])) {
       ob_start();
       // El usuario existe en la tabla users, se puede realizar la inserción
       if ($tipo_objeto == "figura") {
-        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, altura, marca) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $altura, $marca]);
+        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, altura, marca) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $altura, $marca]);
       } else if ($tipo_objeto == "libro") {
-        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, volumen, editorial, autor, genero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $volumen, $editorial, $autor, $genero]);
+        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, volumen, editorial, autor, genero) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $volumen, $editorial, $autor, $genero]);
       } else if ($tipo_objeto == "videojuego") {
-        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, genero, plataforma, compañia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $genero, $plataforma, $compañia]);
+        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, genero, plataforma, compañia) VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $genero, $plataforma, $compañia]);
       }  else if ($tipo_objeto == "manga") {
-        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, editorial, volumen, autor, genero) VALUES (?, ?,?,?,?,?,?,?,?,?,?,?)");
-        $sql->execute([$nombre_objeto, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $editorial, $volumen, $autor, $genero]);
+        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, editorial, volumen, autor, genero) VALUES (?,?, ?,?,?,?,?,?,?,?,?,?,?)");
+        $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $editorial, $volumen, $autor, $genero]);
       }
 
 

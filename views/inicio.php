@@ -3,7 +3,39 @@ session_start();
 if (empty($_SESSION['user_id'])) {
     header('Location: ../index.php');
 }
+
+require_once('../controllers/database.php');
+$user_id = $_SESSION['user_id'];
+$db = new Database();
+$conexion = $db->connect();
+
+
+$registros_por_pagina = 9; /* CON ESTA VARIABLE INDICAREMOS EL NUMERO DE REGISTROS QUE QUEREMOS POR PAGINA*/
+$estoy_en_pagina = 1;/* CON ESTA VARIABLE INDICAREMOS la pagina en la que estamos*/
+
+if (isset($_GET["pagina"])) {
+    $estoy_en_pagina = $_GET["pagina"];
+}
+
+$empezar_desde = ($estoy_en_pagina - 1) * $registros_por_pagina;
+
+
+$sql_total = "SELECT * FROM inventario";
+/* CON LIMIT 0,3 HACE LA SELECCION DE LOS 3 REGISTROS QUE HAY EMPEZANDO DESDE EL REGISTRO 0*/
+$sql = $conexion->prepare($sql_total);
+$sql->execute(array());
+
+$num_filas = $sql->rowCount(); /* nos dice el numero de registros del reusulset*/
+$total_paginas = ceil($num_filas / $registros_por_pagina);
+
+$sql = $conexion->prepare("SELECT * FROM inventario WHERE id_usuario = ? ORDER BY id_objeto DESC LIMIT $empezar_desde,$registros_por_pagina");
+$sql->execute([$user_id]);
 //$_SESSION['id_pagina'] = 0;
+
+//--------------paginación--------------------------------------------------------
+
+
+//-----------------------------------------------------------------------2
 ?>
 
 
@@ -78,7 +110,7 @@ if (empty($_SESSION['user_id'])) {
     </nav>
 
     <div class="centrar_boton">
-        <a class="button" href="formulario_crear.php">formulario</a>
+
     </div>
 
     <!--elementos-->
@@ -88,13 +120,7 @@ if (empty($_SESSION['user_id'])) {
         <div class="contenedor">
 
             <?php
-            require_once('../controllers/database.php');
-            $user_id = $_SESSION['user_id'];
-            $db = new Database();
-            $conexion = $db->connect();
 
-            $sql = $conexion->prepare("SELECT * FROM inventario WHERE id_usuario = ? ORDER BY id_objeto DESC");
-            $sql->execute([$user_id]);
             while ($datos = $sql->fetchObject()) { ?>
 
 
@@ -107,6 +133,7 @@ if (empty($_SESSION['user_id'])) {
 
 
                     <div class="etiquetas">
+                        <span class="badge"><?= $datos->año_salida ?></span>
                         <span class="badge"><?= $datos->tipo_objeto ?></span>
                         <span class="badge"><?= $datos->estado_objeto ?></span>
                         <span class="badge"><?= $datos->curso ?></span>
@@ -144,7 +171,7 @@ if (empty($_SESSION['user_id'])) {
                             <a href="../controllers/eliminar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-trash-can"></i></a>
                         </div>
                         <div class="icono">
-                            <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>'"><i class="fa-solid fa-pencil"></i></a>
+                            <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-pencil"></i></a>
                         </div>
                         <div class="icono">
                             <a href="info.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-circle-info"></i></a>
@@ -315,6 +342,18 @@ if (empty($_SESSION['user_id'])) {
         </div>
     </section>
 
+    <div class="paginas">
+        <?php
+        for ($i = 1; $i <= $total_paginas; $i++) {
+            /*		echo "<a href='?pagina=" . $i . "'>" . $i . "</a>  ";*/
+            echo "<a href='inicio.php?pagina=" . $i . "'>" . $i . "</a>  ";
+        }
+
+        ?>
+    </div>
+
+    <a href="formulario_crear.php" class="btn-flotante">Añadir</a>
+
     <!--footer-->
     <footer class="footer">
         <div class="footer__addr logo">
@@ -356,6 +395,8 @@ if (empty($_SESSION['user_id'])) {
 
 
         </ul>
+
+
 
         <div class="legal">
             <p>Copyright &copy; 2023 GeekManager. All rights reserved.</p>

@@ -77,6 +77,11 @@ if (empty($_SESSION['user_id'])) {
                 <input type="text" id="nombre_objeto" name="nombre_objeto" required><br>
             </div>
 
+            <div>
+                <label for="año">Año de salida:</label><br>
+                <input type="number" id="año_salida" name="año_salida" required><br>
+            </div>
+
 
             <div>
                 <label for="estado">Estado del objeto:</label><br>
