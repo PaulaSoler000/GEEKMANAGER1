@@ -44,6 +44,8 @@ if (!empty($_POST["crear_objeto"])) {
     $estado_objeto = $_POST["estado_objeto"];
     $curso = $_POST["curso"];
     $descripcion = $_POST["descripcion"];
+    $tagValues = $_POST["tagValue"];
+    echo ($tagValues);
 
     //opciones
     $edicion = $_POST["edicion"];

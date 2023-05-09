@@ -20,7 +20,7 @@ if (empty($_SESSION['user_id'])) {
 
     <link rel="stylesheet" href="../node_modules/trumbowyg/dist/ui/trumbowyg.min.css">
 
-    <!--<link href="../node_modules/tagify-master/dist/tagify.css" rel="stylesheet">-->
+    <link href="../node_modules/tagify-master/dist/tagify.css" rel="stylesheet">
 
 
 </head>
@@ -114,7 +114,7 @@ if (empty($_SESSION['user_id'])) {
                 </select><br>
 
 
-                <div class="tag_wraper">
+                <!--<div class="tag_wraper">
                     <div class="tag_titulo">
                     <h4>Tagas</h4>
                     </div>
@@ -130,8 +130,9 @@ if (empty($_SESSION['user_id'])) {
                             <p><span>10</span> tag restantes</p>
                             <button>Limpiar</button>
                     </div>
-                </div>
+                </div>-->
 
+                <input type="text" name=tags value="tagValue">
 
 
                 <div id="edicionDiv" style="display: none;">
@@ -194,17 +195,17 @@ if (empty($_SESSION['user_id'])) {
     <script src="../js/tags.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!--<script src="../node_modules/tagify-master/dist/jQuery.tagify.min.js"></script>-->
+    <script src="../node_modules/tagify-master/dist/jQuery.tagify.min.js"></script>
 
     <script src="../node_modules/trumbowyg/dist/trumbowyg.min.js"></script>
     <script>
         $('#descripcion').trumbowyg();
 
-        //$('[name=tags]').tagify();
+        $('[name=tags]').tagify();
 
-        //$('[name=tags]').tagify({
-        //    duplicates: false
-        //});
+        $('[name=tags]').tagify({
+            duplicates: false
+        });
     </script>
 
 </body>
