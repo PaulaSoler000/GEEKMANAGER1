@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2023 a las 22:24:17
+-- Tiempo de generación: 09-05-2023 a las 21:53:51
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -72,7 +72,6 @@ INSERT INTO `inventario` (`id_objeto`, `id_usuario`, `nombre_objeto`, `año_sali
 (183, 1, 'Two Piece', 0000, 'manga', 'seminuevo', 'sin_empezar', 'swdfwef', '../fotos/logo_con_nombre.png', '', '', 0, '', '', '', '', '', ''),
 (184, 1, 'ss', 0000, 'libro', 'nuevo', 'sin_empezar', 'ss', '../fotos/2.png', '', '', 1, '', '', '', '', '', ''),
 (185, 1, 'wded', 0000, 'libro', 'nuevo', 'sin_empezar', 'dwewed', '../fotos/logo_transparente.png', '', '', 1, '', '', '', '', '', ''),
-(186, 1, 'wefefwef', 0000, 'videojuego', 'seminuevo', 'empezado', 'fewwef', '../fotos/3.png', '', '', 0, '', 'wefwef', '', '', 'fwefw', 'fwefwe'),
 (187, 2, '2', 0000, 'libro', 'seminuevo', 'empezado', '2', '2', '2', '2', 2, '2', '2', '', '', '', ''),
 (188, 1, 'qq', 0000, 'manga', 'seminuevo', 'sin_empezar', 'qq', '../fotos/1.png', '', '', 0, '', '', '', '', '', ''),
 (189, 1, 's', 0000, 'manga', 'seminuevo', 'empezado', 's', '../fotos/2.png', '', '', 0, '', '', '', '', '', ''),
@@ -80,8 +79,9 @@ INSERT INTO `inventario` (`id_objeto`, `id_usuario`, `nombre_objeto`, `año_sali
 (191, 1, 'dc', 0000, 'figura', 'nuevo', 'empezado', 'qw', '../fotos/2.png', 's', '', 0, '', '', 'sx', 'ssxs', '', ''),
 (192, 1, 'sdsa', 0000, 'manga', 'seminuevo', 'terminado', 'asd', '../fotos/2.png', '', '', 0, '', '', '', '', '', ''),
 (193, 1, 'de', 0000, 'libro', 'seminuevo', 'empezado', 'ws', '../fotos/2.png', '', '', 1212, '', '', '', '', '', ''),
-(194, 1, 'wolf children', 0000, 'manga', 'nuevo', 'sin_empezar', 'Manga de niños', '../fotos/logo_transparente.png', '', '', 1, '', '', '', '', '', ''),
-(197, 1, 'hola', 0000, 'manga', 'seminuevo', 'terminado', '<p><strong><em>hola a todos</em></strong></p>', '../fotos/logo_transparente.png', 'q', 'q', 1, 'q', 'q', '', '', '', '');
+(194, 1, 'wolf children', 2000, 'manga', 'nuevo', 'sin_empezar', 'Manga de niños', '../fotos/2.png', 'w', 'w', 1, 'w', 'w', '', '', '', ''),
+(199, 1, 'nuevo', 2000, 'figura', 'seminuevo', 'sin_empezar', '<p></p><ul><li><strong>holaaa</strong></li></ul><p></p>', '../fotos/1.png', '2easd', '', 0, '', '', '1dawda', '1da', '', ''),
+(200, 1, 'Videojuego prueba', 2000, 'videojuego', 'seminuevo', 'sin_empezar', '<p>dfdewdfwd</p>', '../fotos/4.png', 'efwef', '', 0, '', 'www11111', '', '', 'plataforma', 'compañia');
 
 -- --------------------------------------------------------
 
@@ -174,7 +174,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_objeto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
+  MODIFY `id_objeto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 
 --
 -- AUTO_INCREMENT de la tabla `tags`
