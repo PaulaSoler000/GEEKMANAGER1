@@ -23,6 +23,8 @@ if (empty($_SESSION['user_id'])) {
     <script src="https://kit.fontawesome.com/4a0af06348.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="../node_modules/trumbowyg/dist/ui/trumbowyg.min.css">
+
+    <link href="../node_modules/tagify-master/dist/tagify.css" rel="stylesheet">
     <title>Formulario editar</title>
 
 </head>
@@ -118,6 +120,8 @@ if (empty($_SESSION['user_id'])) {
 
                 </div>
 
+                <input type="text" name="tags" value="<?= $datos->tags ?>">
+
                 <div>
                     <label for="tipo">Tipo de objeto:</label><br>
                     <select id="tipo_objeto" name="tipo_objeto" required>
@@ -190,10 +194,26 @@ if (empty($_SESSION['user_id'])) {
 <script src="../js/opcion.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../node_modules/tagify-master/dist/jQuery.tagify.min.js"></script>
 <script src="../node_modules/trumbowyg/dist/trumbowyg.min.js"></script>
 <script>
-    $('#descripcion').trumbowyg();
-</script>
+        $('#descripcion').trumbowyg();
+
+        $('tags').tagify();
+
+        $(function() {
+            // Inicializa tagify
+            $('[name=tags]').tagify({
+                duplicates: false
+            });
+
+            // Agrega evento para guardar tags en campo oculto antes de enviar el formulario
+            $('form').on('submit', function() {
+                var tags = $('[name=tags]').tagify('serialize').map(tagData => tagData.value);
+                $('#tags').val(tags.join(','));
+            });
+        });
+    </script>
 </body>
 
 </html>

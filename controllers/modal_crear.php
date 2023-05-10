@@ -45,8 +45,18 @@ if (!empty($_POST["crear_objeto"])) {
     $estado_objeto = $_POST["estado_objeto"];
     $curso = $_POST["curso"];
     $descripcion = $_POST["descripcion"];
-    $tagValues = $_POST["tagValue"];
-    echo ($tagValues);
+  
+    $data = json_decode($_POST["tags"], true);
+    $tagsArray = array();
+    
+    foreach ($data as $item) {
+        $tagsArray[] = $item['value'];
+    }
+    
+    $tags = implode(', ', $tagsArray);
+    
+
+    
 
     //opciones
     $edicion = $_POST["edicion"];
@@ -72,17 +82,17 @@ if (!empty($_POST["crear_objeto"])) {
       ob_start();
       // El usuario existe en la tabla users, se puede realizar la inserción
       if ($tipo_objeto == "figura") {
-        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, altura, marca) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $altura, $marca]);
+        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, altura, marca, tags) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $altura, $marca, $tags]);
       } else if ($tipo_objeto == "libro") {
-        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, volumen, editorial, autor, genero) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $volumen, $editorial, $autor, $genero]);
+        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, volumen, editorial, autor, genero,tags) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?)");
+        $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $volumen, $editorial, $autor, $genero, $tags]);
       } else if ($tipo_objeto == "videojuego") {
-        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, genero, plataforma, compañia) VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $genero, $plataforma, $compañia]);
+        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, genero, plataforma, compañia, tags) VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)");
+        $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $genero, $plataforma, $compañia, $tags]);
       }  else if ($tipo_objeto == "manga") {
-        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, editorial, volumen, autor, genero) VALUES (?,?, ?,?,?,?,?,?,?,?,?,?,?)");
-        $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $editorial, $volumen, $autor, $genero]);
+        $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, editorial, volumen, autor, genero, tags) VALUES (?,?, ?,?,?,?,?,?,?,?,?,?,?,?)");
+        $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $editorial, $volumen, $autor, $genero, $tags]);
       }
 
 
@@ -98,7 +108,7 @@ if (!empty($_POST["crear_objeto"])) {
           header("Location: ../views/videojuegos.php");
         } else if ($tipo_objeto == 'figura') {
           header("Location: ../views/figuras.php");
-        }
+        } 
       } else {
         echo 'Error al añadir objeto: ' . $db->error;
       }
@@ -107,5 +117,4 @@ if (!empty($_POST["crear_objeto"])) {
     }
   }
 }
-
 ?>

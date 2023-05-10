@@ -29,7 +29,7 @@ $num_filas = $sql->rowCount(); /* nos dice el numero de registros del reusulset*
 $total_paginas = ceil($num_filas / $registros_por_pagina);
 
 $sql = $conexion->prepare("SELECT * FROM inventario WHERE id_usuario = ? and tipo_objeto='videojuego' ORDER BY id_objeto DESC LIMIT $empezar_desde,$registros_por_pagina");
-            $sql->execute([$user_id]);
+$sql->execute([$user_id]);
 ?>
 
 <!DOCTYPE html>
@@ -99,37 +99,13 @@ $sql = $conexion->prepare("SELECT * FROM inventario WHERE id_usuario = ? and tip
 
 
                     <div class="etiquetas">
-                        <span class="badge"><?= $datos->año_salida ?></span>
-                        <span class="badge"><?= $datos->tipo_objeto ?></span>
-                        <span class="badge"><?= $datos->estado_objeto ?></span>
-                        <span class="badge"><?= $datos->curso ?></span>
-                        <?php if ($datos->edicion != "" && $datos->edicion != null) : ?>
-                            <span class="badge"><?= $datos->edicion ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->editorial != "") : ?>
-                            <span class="badge"><?= $datos->editorial ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->volumen != 0) : ?>
-                            <span class="badge"><?= $datos->volumen ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->autor != "") : ?>
-                            <span class="badge"><?= $datos->autor ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->genero != "") : ?>
-                            <span class="badge"><?= $datos->genero ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->altura != "") : ?>
-                            <span class="badge"><?= $datos->altura ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->marca != "") : ?>
-                            <span class="badge"><?= $datos->marca ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->plataforma != "") : ?>
-                            <span class="badge"><?= $datos->plataforma ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->compañia != "" && $datos->compañia != null) : ?>
-                            <span class="badge"><?= $datos->compañia ?></span>
-                        <?php endif; ?>
+                        <?php
+
+                        foreach (explode(',', $datos->tags) as $tag) {
+                        ?>
+                            <a href="#" class="badge"><?= $tag ?></a>
+                        <?php }
+                        ?>
                     </div>
 
                     <div class="editar">

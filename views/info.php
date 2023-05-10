@@ -119,6 +119,14 @@ if (empty($_SESSION['user_id'])) {
                     <?php if ($datos->compañia != "" && $datos->compañia != null) : ?>
                         <span class="badge"><?= $datos->compañia ?></span>
                     <?php endif; ?>
+                    
+                    <?php  
+                    
+                    foreach (explode(',', $datos->tags ) as $tag){
+                    ?>
+                    <span class="badge"><?= $tag ?></span>
+                    <?php }
+                    ?>
                 </div>
 
 

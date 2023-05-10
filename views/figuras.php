@@ -101,37 +101,13 @@ $sql->execute([$user_id]);
 
 
                     <div class="etiquetas">
-                        <span class="badge"><?= $datos->año_salida ?></span>
-                        <span class="badge"><?= $datos->tipo_objeto ?></span>
-                        <span class="badge"><?= $datos->estado_objeto ?></span>
-                        <span class="badge"><?= $datos->curso ?></span>
-                        <?php if ($datos->edicion != "" && $datos->edicion != null) : ?>
-                            <span class="badge"><?= $datos->edicion ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->editorial != "") : ?>
-                            <span class="badge"><?= $datos->editorial ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->volumen != 0) : ?>
-                            <span class="badge"><?= $datos->volumen ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->autor != "") : ?>
-                            <span class="badge"><?= $datos->autor ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->genero != "") : ?>
-                            <span class="badge"><?= $datos->genero ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->altura != "") : ?>
-                            <span class="badge"><?= $datos->altura ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->marca != "") : ?>
-                            <span class="badge"><?= $datos->marca ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->plataforma != "") : ?>
-                            <span class="badge"><?= $datos->plataforma ?></span>
-                        <?php endif; ?>
-                        <?php if ($datos->compañia != "" && $datos->compañia != null) : ?>
-                            <span class="badge"><?= $datos->compañia ?></span>
-                        <?php endif; ?>
+                        <?php
+
+                        foreach (explode(',', $datos->tags) as $tag) {
+                        ?>
+                            <a href="#" class="badge"><?= $tag ?></a>
+                        <?php }
+                        ?>
                     </div>
 
                     <div class="editar">
@@ -310,7 +286,7 @@ $sql->execute([$user_id]);
 
         ?>
     </div>
-    
+
     <a href="formulario_crear.php" class="btn-flotante">Añadir</a>
 
     <!--footer-->

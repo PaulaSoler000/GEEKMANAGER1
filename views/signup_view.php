@@ -28,15 +28,15 @@ session_start();
 
   <div id="form-registro">
     
-      <form action="../controllers/signup.php" method="POST">
+      <form action="../controllers/signup.php" method="POST" id="signup_view">
       <h1 class="titulo_registro">Regístrate o <a href="login_view.php">Accede</a></h1>
         <label for="usuario">Usuario:</label><br>
-        <input name="usuario" type="text" placeholder="Intrtoduzca su usuario"><br>
+        <input name="usuario" type="text" placeholder="Intrtoduzca su usuario" required><br>
         <label for="email">Email:</label><br>
-        <input name="email" type="text" placeholder="Introduzca su email"><br>
+        <input name="email" type="text" placeholder="Introduzca su email" required><br>
         <label for="password">Contraseña:</label><br>
-        <input name="password" type="password" placeholder="Introduzca su contraseña"><br>
-        <button type="submit" value="Submit">Registrarse</button>
+        <input name="password" type="password" placeholder="Introduzca su contraseña" required><br>
+        <button type="submit" name="signup_view" value="Submit">Registrarse</button>
       </form>
 
   </div>

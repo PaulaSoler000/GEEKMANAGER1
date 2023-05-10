@@ -137,7 +137,7 @@ if (empty($_SESSION['user_id'])) {
                     </div>
                 </div>-->
 
-                <input type="text" name=tags value="tagValue">
+                <input type="text" name="tags">
 
 
                 <div id="edicionDiv" style="display: none;">
@@ -206,10 +206,19 @@ if (empty($_SESSION['user_id'])) {
     <script>
         $('#descripcion').trumbowyg();
 
-        $('[name=tags]').tagify();
+        $('tags').tagify();
 
-        $('[name=tags]').tagify({
-            duplicates: false
+        $(function() {
+            // Inicializa tagify
+            $('[name=tags]').tagify({
+                duplicates: false
+            });
+
+            // Agrega evento para guardar tags en campo oculto antes de enviar el formulario
+            $('form').on('submit', function() {
+                var tags = $('[name=tags]').tagify('serialize').map(tagData => tagData.value);
+                $('#tags').val(tags.join(','));
+            });
         });
     </script>
 

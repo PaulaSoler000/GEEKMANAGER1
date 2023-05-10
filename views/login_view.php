@@ -28,13 +28,13 @@ session_start();
 
 
 
-      <form action="../controllers/login.php" method="POST">
+      <form action="../controllers/login.php" method="POST" id="login_view">
       <h1 class="titulo_registro">Accede o <a href="signup_view.php">Regístrate</a></h1>
       <label for="email">Email:</label><br>
-        <input name="email" type="text" placeholder="Introduzca su email"><br>
+        <input name="email" type="text" placeholder="Introduzca su email" required><br>
         <label for="password">Contraseña:</label><br>
-        <input name="password" type="password" placeholder="Introduzca su contraseña"><br>
-        <button type="submit" value="Submit">Entrar</button>
+        <input name="password" type="password" placeholder="Introduzca su contraseña" required><br>
+        <button type="submit" name="login_view" value="Submit">Entrar</button>
       </form>
 
   </div>
