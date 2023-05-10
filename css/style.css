@@ -580,11 +580,17 @@ a img#foto_objeto {
   color: #fff;
 }
 
-.editar {
+.elemento .editar{
+  opacity:0;
   display: flex;
   flex-direction: row;
   padding: 5%;
-  justify-content: center;
+  justify-content: center;  
+  transition:1s;
+}
+
+.elemento:hover .editar {
+  opacity:1;
 }
 
 .icono {

@@ -133,7 +133,7 @@ $sql->execute([$user_id]);
 
 
                     <div class="etiquetas">
-                        <span class="badge"><?= $datos->año_salida ?></span>
+                        <a class="badge" href="\find?type=año&valor=<?= $datos->año_salida ?>"><?= $datos->año_salida ?></a>
                         <span class="badge"><?= $datos->tipo_objeto ?></span>
                         <span class="badge"><?= $datos->estado_objeto ?></span>
                         <span class="badge"><?= $datos->curso ?></span>
