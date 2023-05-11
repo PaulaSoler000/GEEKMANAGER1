@@ -5,7 +5,18 @@ if (empty($_SESSION['user_id'])) {
 }
 
 require_once('../controllers/database.php');
+
 $user_id = $_SESSION['user_id'];
+
+
+
+$filt_tag ='';
+if ($_SESSION['id_pag_act']===9) {
+    $filt_tag = $_SESSION['tags'];
+}
+
+
+$_SESSION['id_pag_act']=0;
 $db = new Database();
 $conexion = $db->connect();
 
@@ -28,8 +39,18 @@ $sql->execute(array());
 $num_filas = $sql->rowCount(); /* nos dice el numero de registros del reusulset*/
 $total_paginas = ceil($num_filas / $registros_por_pagina);
 
-$sql = $conexion->prepare("SELECT * FROM inventario WHERE id_usuario = ? ORDER BY id_objeto DESC LIMIT $empezar_desde,$registros_por_pagina");
-$sql->execute([$user_id]);
+$sql_filt = "SELECT * FROM inventario WHERE id_usuario = ? AND tags LIKE ? ORDER BY id_objeto DESC LIMIT ?, ?";
+$sql_no_filt = "SELECT * FROM inventario WHERE id_usuario = ? ORDER BY id_objeto DESC LIMIT ?, ?";
+
+if (!is_null($filt_tag)) {
+    $sql = $conexion->prepare($sql_filt);
+    $filtro = "%{$filt_tag}%";
+    $sql->execute([$user_id, $filtro, $empezar_desde, $registros_por_pagina]);
+} else {
+    $sql = $conexion->prepare($sql_no_filt);
+    $sql->execute([$user_id, $empezar_desde, $registros_por_pagina]);
+}
+
 //$_SESSION['id_pagina'] = 0;
 
 //--------------paginación--------------------------------------------------------
@@ -133,14 +154,14 @@ $sql->execute([$user_id]);
 
 
                     <div class="etiquetas">
-                        
-                        <a class="badge" href="\find?type=año&valor=<?= $datos->año_salida ?>"><?= $datos->año_salida ?></a>
                         <?php
 
                         foreach (explode(',', $datos->tags) as $tag) {
                             if ($tag != "") {
                         ?>
-                            <a href="#" class="badge"><?= $tag ?></a>
+                            
+                            <a href="../controllers/encontar_tag.php?type=tags&valor=<?= $tag ?>&tag=<?= $tag ?>" class="badge"><?= $tag ?></a>
+
                         <?php }}
                         ?>
                     </div>

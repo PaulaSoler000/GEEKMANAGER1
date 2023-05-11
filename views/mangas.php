@@ -6,6 +6,14 @@ if (empty($_SESSION['user_id'])) {
 
 require_once('../controllers/database.php');
 $user_id = $_SESSION['user_id'];
+
+$filt_tag ='';
+if ($_SESSION['id_pag_act']===9) {
+    $filt_tag = $_SESSION['tags'];
+}
+
+
+$_SESSION['id_pag_act'] = 1;
 $db = new Database();
 $conexion = $db->connect();
 
@@ -20,7 +28,7 @@ if (isset($_GET["pagina"])) {
 $empezar_desde = ($estoy_en_pagina - 1) * $registros_por_pagina;
 
 
-$sql_total = "SELECT * FROM inventario WHERE tipo_objeto='manga'";
+$sql_total = "SELECT * FROM inventario WHERE tipo_objeto='libro'";
 /* CON LIMIT 0,3 HACE LA SELECCION DE LOS 3 REGISTROS QUE HAY EMPEZANDO DESDE EL REGISTRO 0*/
 $sql = $conexion->prepare($sql_total);
 $sql->execute(array());
@@ -28,8 +36,17 @@ $sql->execute(array());
 $num_filas = $sql->rowCount(); /* nos dice el numero de registros del reusulset*/
 $total_paginas = ceil($num_filas / $registros_por_pagina);
 
-$sql = $conexion->prepare("SELECT * FROM inventario WHERE id_usuario = ? and tipo_objeto='manga' ORDER BY id_objeto DESC LIMIT $empezar_desde,$registros_por_pagina");
-$sql->execute([$user_id]);
+$sql_filt = "SELECT * FROM inventario WHERE id_usuario = ? AND tags LIKE ? AND tipo_objeto='manga' ORDER BY id_objeto DESC LIMIT ?, ?";
+$sql_no_filt = "SELECT * FROM inventario WHERE id_usuario = ? AND tipo_objeto='manga' ORDER BY id_objeto DESC LIMIT ?, ?";
+
+if (!is_null($filt_tag)) {
+    $sql = $conexion->prepare($sql_filt);
+    $filtro = "%{$filt_tag}%";
+    $sql->execute([$user_id, $filtro, $empezar_desde, $registros_por_pagina]);
+} else {
+    $sql = $conexion->prepare($sql_no_filt);
+    $sql->execute([$user_id, $empezar_desde, $registros_por_pagina]);
+}
 ?>
 
 <!DOCTYPE html>
@@ -105,9 +122,11 @@ $sql->execute([$user_id]);
                         <?php
 
                         foreach (explode(',', $datos->tags) as $tag) {
+                            if ($tag != "") {
                         ?>
-                            <a href="#" class="badge"><?= $tag ?></a>
+                                <a href="../controllers/encontar_tag.php?type=tags&valor=<?= $tag ?>" class="badge"><?= $tag ?></a>
                         <?php }
+                        }
                         ?>
                     </div>
 

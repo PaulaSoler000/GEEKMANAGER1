@@ -3,6 +3,7 @@ session_start();
 if (empty($_SESSION['user_id'])) {
     header('Location: ../index.php');
 }
+$_SESSION['id_pag_act'] = 0;
 
 
 ?>
@@ -119,13 +120,15 @@ if (empty($_SESSION['user_id'])) {
                     <?php if ($datos->compañia != "" && $datos->compañia != null) : ?>
                         <span class="badge"><?= $datos->compañia ?></span>
                     <?php endif; ?>
-                    
-                    <?php  
-                    
-                    foreach (explode(',', $datos->tags ) as $tag){
+
+                    <?php
+
+                    foreach (explode(',', $datos->tags) as $tag) {
+                        if ($tag != "") {
                     ?>
-                    <span class="badge"><?= $tag ?></span>
+                            <a href="../controllers/encontar_tag.php?type=tags&valor=<?= $tag ?>" class="badge"><?= $tag ?></a>
                     <?php }
+                    }
                     ?>
                 </div>
 
@@ -140,7 +143,7 @@ if (empty($_SESSION['user_id'])) {
                         <a href="../controllers/eliminar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-trash-can"></i></a>
                     </div>
                     <div class="icono_info">
-                    <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-pencil"></i></a>
+                        <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-pencil"></i></a>
                     </div>
 
 
