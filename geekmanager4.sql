@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2023 a las 21:53:51
+-- Tiempo de generación: 12-05-2023 a las 20:35:58
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -47,6 +47,7 @@ CREATE TABLE `inventario` (
   `tipo_objeto` set('manga','libro','videojuego','figura') COLLATE utf8_unicode_ci NOT NULL,
   `estado_objeto` set('nuevo','seminuevo','usado') COLLATE utf8_unicode_ci NOT NULL,
   `curso` set('sin_empezar','empezado','terminado') COLLATE utf8_unicode_ci NOT NULL,
+  `tags` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `descripcion` text COLLATE utf8_unicode_ci NOT NULL,
   `foto` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `edicion` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -64,24 +65,15 @@ CREATE TABLE `inventario` (
 -- Volcado de datos para la tabla `inventario`
 --
 
-INSERT INTO `inventario` (`id_objeto`, `id_usuario`, `nombre_objeto`, `año_salida`, `tipo_objeto`, `estado_objeto`, `curso`, `descripcion`, `foto`, `edicion`, `editorial`, `volumen`, `autor`, `genero`, `altura`, `marca`, `plataforma`, `compañia`) VALUES
-(178, 1, '11', 0000, 'libro', 'nuevo', 'sin_empezar', '11', '../fotos/1.png', '', '', 0, '', '', '', '', '', ''),
-(180, 1, '33', 0000, 'libro', 'nuevo', 'empezado', '11111111', '../fotos/1.png', '', '', 0, '', '', '', '', '', ''),
-(181, 1, 'One Piece', 0000, 'manga', 'seminuevo', 'sin_empezar', 'Es un magna de piratas', '../fotos/4.png', '', '', 0, '', '', '', '', '', ''),
-(182, 1, 'qwdqwd', 0000, 'figura', 'usado', 'sin_empezar', 'wdqwd', '../fotos/logo_transparente.png', '1', '', 0, '', '', '12ex', 'dwqed', '', ''),
-(183, 1, 'Two Piece', 0000, 'manga', 'seminuevo', 'sin_empezar', 'swdfwef', '../fotos/logo_con_nombre.png', '', '', 0, '', '', '', '', '', ''),
-(184, 1, 'ss', 0000, 'libro', 'nuevo', 'sin_empezar', 'ss', '../fotos/2.png', '', '', 1, '', '', '', '', '', ''),
-(185, 1, 'wded', 0000, 'libro', 'nuevo', 'sin_empezar', 'dwewed', '../fotos/logo_transparente.png', '', '', 1, '', '', '', '', '', ''),
-(187, 2, '2', 0000, 'libro', 'seminuevo', 'empezado', '2', '2', '2', '2', 2, '2', '2', '', '', '', ''),
-(188, 1, 'qq', 0000, 'manga', 'seminuevo', 'sin_empezar', 'qq', '../fotos/1.png', '', '', 0, '', '', '', '', '', ''),
-(189, 1, 's', 0000, 'manga', 'seminuevo', 'empezado', 's', '../fotos/2.png', '', '', 0, '', '', '', '', '', ''),
-(190, 1, 'xs', 0000, 'manga', 'seminuevo', 'empezado', 'qwwq', '../fotos/4.png', '', '', 0, '', '', '', '', '', ''),
-(191, 1, 'dc', 0000, 'figura', 'nuevo', 'empezado', 'qw', '../fotos/2.png', 's', '', 0, '', '', 'sx', 'ssxs', '', ''),
-(192, 1, 'sdsa', 0000, 'manga', 'seminuevo', 'terminado', 'asd', '../fotos/2.png', '', '', 0, '', '', '', '', '', ''),
-(193, 1, 'de', 0000, 'libro', 'seminuevo', 'empezado', 'ws', '../fotos/2.png', '', '', 1212, '', '', '', '', '', ''),
-(194, 1, 'wolf children', 2000, 'manga', 'nuevo', 'sin_empezar', 'Manga de niños', '../fotos/2.png', 'w', 'w', 1, 'w', 'w', '', '', '', ''),
-(199, 1, 'nuevo', 2000, 'figura', 'seminuevo', 'sin_empezar', '<p></p><ul><li><strong>holaaa</strong></li></ul><p></p>', '../fotos/1.png', '2easd', '', 0, '', '', '1dawda', '1da', '', ''),
-(200, 1, 'Videojuego prueba', 2000, 'videojuego', 'seminuevo', 'sin_empezar', '<p>dfdewdfwd</p>', '../fotos/4.png', 'efwef', '', 0, '', 'www11111', '', '', 'plataforma', 'compañia');
+INSERT INTO `inventario` (`id_objeto`, `id_usuario`, `nombre_objeto`, `año_salida`, `tipo_objeto`, `estado_objeto`, `curso`, `tags`, `descripcion`, `foto`, `edicion`, `editorial`, `volumen`, `autor`, `genero`, `altura`, `marca`, `plataforma`, `compañia`) VALUES
+(187, 2, '2', 0000, 'libro', 'seminuevo', 'empezado', '', '2', '2', '2', '2', 2, '2', '2', '', '', '', ''),
+(222, 1, 'hola 2', 2001, 'figura', 'nuevo', 'sin_empezar', '123, 4, 3, 5, 1, 15', '<p>111</p>', '../fotos/adventure time 1.jpg', 'q', '', 0, 'q', '', 'q', 'q', '', ''),
+(223, 1, 'hola1', 0000, 'manga', 'seminuevo', 'sin_empezar', '1, 2, 3, 4', '<p>1111</p>', '../fotos/adventure time 1.jpg', '', '', 0, '', '', '', '', '', ''),
+(224, 1, 'ss', 0000, 'libro', 'seminuevo', 'sin_empezar', '1, 2, 3, 4', '<p>2222</p>', '../fotos/adventure time 1.jpg', '', '', 0, '', '', '', '', '', ''),
+(225, 1, 'qqq', 0000, 'videojuego', 'seminuevo', 'terminado', '1, 2, 3, 4, 5', '<p>222222</p>', '../fotos/adventure time 1.jpg', '', '', 0, '', '', '', '', '', ''),
+(226, 1, '1234', 2000, 'figura', 'seminuevo', 'sin_empezar', '1, 2, 3, 4, 5', '<p>1</p>', '../fotos/adventure time 1.jpg', 'a', '', 0, 'b', '', 'c', 'd', '', ''),
+(227, 1, 'La llamada de Cuthulu', 1987, 'libro', 'seminuevo', 'terminado', 'LoveCraft, Mitologia, TerrorCosmico', '<p>Mejor libro de LoveCraft</p>', '../fotos/blueprint seungmin 1.jpg', 'Primera', 'Alfalguardia', 1, 'LoveCraft', 'Terror', '', '', '', ''),
+(228, 1, 'w', 1999, 'figura', 'nuevo', 'empezado', '4, 5, 3', '<p>22</p>', '../fotos/1.png', '1', '', 0, '', '', '1', '1', '', '');
 
 -- --------------------------------------------------------
 
@@ -127,7 +119,9 @@ INSERT INTO `users` (`id`, `usuario`, `email`, `password`) VALUES
 (1, 'Paula', 'paula@paula.com', '$2y$10$gZPeG1ojMTES1BVeLXjpY.fk9RPoOmCAqRZ3wWw4P4W92YSgSkgbq'),
 (2, 'prueba', 's@s', '$2y$10$YE9hwIlHkJ78YcGkU37fhOHmcHeAnMnrE4mqSZBOVj2sO88wB60Aq'),
 (11, 'prueba2', 'paula@paula.com', '$2y$10$YhdhBjRZyQy9RTIOKNPuP.j38qwIHDSqyVvIDLf4FvDomPe1EChOW'),
-(12, 'paulasoler', 'hola@hola.com', '$2y$10$nMtG5ChOFJAertnA8hJ6FeWTGOT4gSBX0PKB/se88jXKJUBaYDDam');
+(12, 'paulasoler', 'hola@hola.com', '$2y$10$nMtG5ChOFJAertnA8hJ6FeWTGOT4gSBX0PKB/se88jXKJUBaYDDam'),
+(17, 'Alejandro', 'ale@pruebamail.com', '$2y$10$M0P4LTM3YfOgdA.nMfVfqu5FhESNLPGF80FXcKsITUZa81AJTghSK'),
+(20, 'paula@', 'paula@soler.com', '$2y$10$k4pZgiIcN7iw/oAgfsNLLOm1oa5gJUNPIoCGWCbISZSBeyqy3.V4C');
 
 --
 -- Índices para tablas volcadas
@@ -174,7 +168,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_objeto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `id_objeto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
 
 --
 -- AUTO_INCREMENT de la tabla `tags`
@@ -192,7 +186,7 @@ ALTER TABLE `tagsrelations`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas
