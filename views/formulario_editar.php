@@ -120,7 +120,6 @@ if (empty($_SESSION['user_id'])) {
 
                 </div>
 
-                <input type="text" name="tags" value="<?= $datos->tags ?>">
 
                 <div>
                     <label for="tipo">Tipo de objeto:</label><br>
@@ -173,6 +172,10 @@ if (empty($_SESSION['user_id'])) {
                     </div>
                 </div>
 
+                <div>
+                    <label for="tags">Tags:</label><br>
+                    <input type="text" name="tags" value="<?= $datos->tags ?>">
+                </div>
 
                 <div>
                     <label for="foto">Foto:</label><br>
@@ -197,23 +200,23 @@ if (empty($_SESSION['user_id'])) {
 <script src="../node_modules/tagify-master/dist/jQuery.tagify.min.js"></script>
 <script src="../node_modules/trumbowyg/dist/trumbowyg.min.js"></script>
 <script>
-        $('#descripcion').trumbowyg();
+    $('#descripcion').trumbowyg();
 
-        $('tags').tagify();
+    $('tags').tagify();
 
-        $(function() {
-            // Inicializa tagify
-            $('[name=tags]').tagify({
-                duplicates: false
-            });
-
-            // Agrega evento para guardar tags en campo oculto antes de enviar el formulario
-            $('form').on('submit', function() {
-                var tags = $('[name=tags]').tagify('serialize').map(tagData => tagData.value);
-                $('#tags').val(tags.join(','));
-            });
+    $(function() {
+        // Inicializa tagify
+        $('[name=tags]').tagify({
+            duplicates: false
         });
-    </script>
+
+        // Agrega evento para guardar tags en campo oculto antes de enviar el formulario
+        $('form').on('submit', function() {
+            var tags = $('[name=tags]').tagify('serialize').map(tagData => tagData.value);
+            $('#tags').val(tags.join(','));
+        });
+    });
+</script>
 </body>
 
 </html>

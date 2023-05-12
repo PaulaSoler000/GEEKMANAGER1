@@ -137,8 +137,6 @@ if (empty($_SESSION['user_id'])) {
                     </div>
                 </div>-->
 
-                <input type="text" name="tags">
-
 
                 <div id="edicionDiv" style="display: none;">
                     <label for="edicion">Edición:</label><br>
@@ -178,6 +176,11 @@ if (empty($_SESSION['user_id'])) {
                     <label for="marca">Marca:</label><br>
                     <input type="text" id="marca" name="marca"><br>
                 </div>
+            </div>
+
+            <div>
+                <label for="tags">Tags:</label><br>
+                <input type="text" name="tags" placeholder="Añade etiquetas..."><br>
             </div>
 
             <div>

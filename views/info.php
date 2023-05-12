@@ -91,6 +91,7 @@ $_SESSION['id_pag_act'] = 0;
 
                 <div class="etiqueta_info">
                     <span class="badge"><?= $datos->tipo_objeto ?></span>
+                    <span class="badge"><?= $datos->año_salida ?></span>
                     <span class="badge"><?= $datos->estado_objeto ?></span>
                     <span class="badge"><?= $datos->curso ?></span>
                     <?php if ($datos->edicion != "" && $datos->edicion != null) : ?>
