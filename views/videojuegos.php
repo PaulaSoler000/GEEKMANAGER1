@@ -39,10 +39,9 @@ $sql->execute(array());
 $num_filas = $sql->rowCount(); /* nos dice el numero de registros del reusulset*/
 $total_paginas = ceil($num_filas / $registros_por_pagina);
 
-$sql_filt = "SELECT * FROM inventario WHERE id_usuario = ? AND tags LIKE ? ORDER BY id_objeto DESC LIMIT ?, ?";
-$sql_no_filt = "SELECT * FROM inventario WHERE id_usuario = ? ORDER BY id_objeto DESC LIMIT ?, ?";
-$sql_buscar = "SELECT * FROM inventario WHERE id_usuario = ? AND (nombre_objeto LIKE ? OR tags LIKE ?) ORDER BY id_objeto DESC LIMIT ?, ?";
-
+$sql_filt = "SELECT * FROM inventario WHERE id_usuario = ?  AND tipo_objeto = ? AND tags LIKE ? ORDER BY id_objeto DESC LIMIT ?, ?";
+$sql_no_filt = "SELECT * FROM inventario WHERE id_usuario = ?  AND tipo_objeto = ? ORDER BY id_objeto DESC LIMIT ?, ?";
+$sql_buscar = "SELECT * FROM inventario WHERE id_usuario = ? AND tipo_objeto = ? AND (nombre_objeto LIKE ? OR tags LIKE ?) ORDER BY id_objeto DESC LIMIT ?, ?";
 
 if (!empty($buscar)) {
     $sql = $conexion->prepare($sql_buscar);
