@@ -7,8 +7,13 @@ if (empty($_SESSION['user_id'])) {
 require_once('../controllers/database.php');
 $user_id = $_SESSION['user_id'];
 
-$filt_tag ='';
-if ($_SESSION['id_pag_act']===9) {
+$buscar = '';
+if ($_SESSION['id_pag_act'] === 8) {
+    $buscar = $_SESSION['buscador'];
+}
+
+$filt_tag = '';
+if ($_SESSION['id_pag_act'] === 9) {
     $filt_tag = $_SESSION['tags'];
 }
 
@@ -35,17 +40,26 @@ $sql->execute(array());
 $num_filas = $sql->rowCount(); /* nos dice el numero de registros del reusulset*/
 $total_paginas = ceil($num_filas / $registros_por_pagina);
 
-$sql_filt = "SELECT * FROM inventario WHERE id_usuario = ? AND tags LIKE ? AND tipo_objeto='libro' ORDER BY id_objeto DESC LIMIT ?, ?";
-$sql_no_filt = "SELECT * FROM inventario WHERE id_usuario = ? AND tipo_objeto='libro' ORDER BY id_objeto DESC LIMIT ?, ?";
+$sql_filt = "SELECT * FROM inventario WHERE id_usuario = ?  AND tipo_objeto = ? AND tags LIKE ? ORDER BY id_objeto DESC LIMIT ?, ?";
+$sql_no_filt = "SELECT * FROM inventario WHERE id_usuario = ?  AND tipo_objeto = ? ORDER BY id_objeto DESC LIMIT ?, ?";
+$sql_buscar = "SELECT * FROM inventario WHERE id_usuario = ? AND tipo_objeto = ? AND (nombre_objeto LIKE ? OR tags LIKE ?) ORDER BY id_objeto DESC LIMIT ?, ?";
 
-if (!is_null($filt_tag)) {
-    $sql = $conexion->prepare($sql_filt);
-    $filtro = "%{$filt_tag}%";
-    $sql->execute([$user_id, $filtro, $empezar_desde, $registros_por_pagina]);
+
+if (!empty($buscar)) {
+    $sql = $conexion->prepare($sql_buscar);
+    $filtro = "%{$buscar}%";
+    $sql->execute([$user_id, "libro", $filtro, $filtro, $empezar_desde, $registros_por_pagina]);
 } else {
-    $sql = $conexion->prepare($sql_no_filt);
-    $sql->execute([$user_id, $empezar_desde, $registros_por_pagina]);
+    if (!is_null($filt_tag)) {
+        $sql = $conexion->prepare($sql_filt);
+        $filtro = "%{$filt_tag}%";
+        $sql->execute([$user_id, "libro", $filtro, $empezar_desde, $registros_por_pagina]);
+    } else {
+        $sql = $conexion->prepare($sql_no_filt);
+        $sql->execute([$user_id, "libro", $empezar_desde, $registros_por_pagina]);
+    }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -92,9 +106,12 @@ if (!is_null($filt_tag)) {
         </div>
     </nav>
 
-    <div class="centrar_boton">
-
-    </div>
+    <form action="../controllers/buscador.php" method="GET">
+        <div class="centrar_buscar">
+            <input type="text" id="texto" value="" name="texto">
+            <button type="submit" name="submit">Buscar</button>
+        </div>
+    </form>
 
     <!--elementos-->
 

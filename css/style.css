@@ -707,9 +707,15 @@ img#foto_objeto_info {
 
 /*------------info----------*/
 
-.centrar_boton {
+.centrar_buscar {
   margin-top: 2%;
   margin-bottom: 2%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+input.centrar_buscar{
+  max-width: 10%;
 }
 
 .button {

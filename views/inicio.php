@@ -8,15 +8,21 @@ require_once('../controllers/database.php');
 
 $user_id = $_SESSION['user_id'];
 
+//Copiar
+$buscar = '';
+if ($_SESSION['id_pag_act'] === 8) {
+    $buscar = $_SESSION['buscador'];
+}
+//Copiar
 
 
-$filt_tag ='';
-if ($_SESSION['id_pag_act']===9) {
+$filt_tag = '';
+if ($_SESSION['id_pag_act'] === 9) {
     $filt_tag = $_SESSION['tags'];
 }
 
 
-$_SESSION['id_pag_act']=0;
+$_SESSION['id_pag_act'] = 0;
 $db = new Database();
 $conexion = $db->connect();
 
@@ -39,17 +45,30 @@ $sql->execute(array());
 $num_filas = $sql->rowCount(); /* nos dice el numero de registros del reusulset*/
 $total_paginas = ceil($num_filas / $registros_por_pagina);
 
+//Copiar
 $sql_filt = "SELECT * FROM inventario WHERE id_usuario = ? AND tags LIKE ? ORDER BY id_objeto DESC LIMIT ?, ?";
 $sql_no_filt = "SELECT * FROM inventario WHERE id_usuario = ? ORDER BY id_objeto DESC LIMIT ?, ?";
+$sql_buscar = "SELECT * FROM inventario WHERE id_usuario = ? AND (nombre_objeto LIKE ? OR tags LIKE ?) ORDER BY id_objeto DESC LIMIT ?, ?";
 
-if (!is_null($filt_tag)) {
-    $sql = $conexion->prepare($sql_filt);
-    $filtro = "%{$filt_tag}%";
-    $sql->execute([$user_id, $filtro, $empezar_desde, $registros_por_pagina]);
+
+if (!empty($buscar)) {
+    $sql = $conexion->prepare($sql_buscar);
+    $filtro = "%{$buscar}%";
+    $sql->execute([$user_id, $filtro, $filtro, $empezar_desde, $registros_por_pagina]);
 } else {
-    $sql = $conexion->prepare($sql_no_filt);
-    $sql->execute([$user_id, $empezar_desde, $registros_por_pagina]);
+    if (!is_null($filt_tag)) {
+        $sql = $conexion->prepare($sql_filt);
+        $filtro = "%{$filt_tag}%";
+        $sql->execute([$user_id, $filtro, $empezar_desde, $registros_por_pagina]);
+    } else {
+        $sql = $conexion->prepare($sql_no_filt);
+        $sql->execute([$user_id, $empezar_desde, $registros_por_pagina]);
+    }
 }
+//Copiar
+
+
+
 
 //$_SESSION['id_pagina'] = 0;
 
@@ -130,9 +149,18 @@ if (!is_null($filt_tag)) {
         </div>
     </nav>
 
-    <div class="centrar_boton">
+    <!--Copiar-->
+    <form action="../controllers/buscador.php" method="GET">
+        <div class="centrar_buscar">
+            <input type="text" id="texto" value="" name="texto">
+            <button type="submit" name="submit">Buscar</button>
+        </div>
+    </form>
+    <!--Copiar-->
 
-    </div>
+
+
+
 
     <!--elementos-->
 
@@ -159,10 +187,11 @@ if (!is_null($filt_tag)) {
                         foreach (explode(',', $datos->tags) as $tag) {
                             if ($tag != "") {
                         ?>
-                            
-                            <a href="../controllers/encontar_tag.php?type=tags&valor=<?= $tag ?>&tag=<?= $tag ?>" class="badge"><?= $tag ?></a>
 
-                        <?php }}
+                                <a href="../controllers/encontar_tag.php?type=tags&valor=<?= $tag ?>&tag=<?= $tag ?>" class="badge"><?= $tag ?></a>
+
+                        <?php }
+                        }
                         ?>
                     </div>
 
