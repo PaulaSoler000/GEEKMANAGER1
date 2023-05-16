@@ -1,13 +1,11 @@
 <?php
+
 session_start();
 if (empty($_SESSION['user_id'])) {
-    header('Location: ../index.php');
+    $_SESSION['user_id'] = 99;
+
 }
-$_SESSION['id_pag_act'] = 0;
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +19,7 @@ $_SESSION['id_pag_act'] = 0;
     <link rel="stylesheet" href="../css/style.css">
     <!-- iconos fontawesome-->
     <script src="https://kit.fontawesome.com/4a0af06348.js" crossorigin="anonymous"></script>
-    <title>Info</title>
+    <title>Compartir</title>
 
 </head>
 
@@ -35,40 +33,24 @@ $_SESSION['id_pag_act'] = 0;
                 <img src="../img/logo_con_nombre.png">
             </a>
         </div>
-        <div class="hamburger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-        <ul class="nav-links">
-            <li class="centro"><a href="inicio.php">Inicio</a></li>
-            <li class="centro"><a href="libros.php">Libros</a></li>
-            <li class="centro"><a href="mangas.php">Mangas</a></li>
-            <li class="centro"><a href="videojuegos.php">Videojuegos</a></li>
-            <li class="centro"><a href="figuras.php">Figuras</a></li>
 
-        </ul>
 
-        <div class="session">
-            <div>¡Hola <?= $_SESSION['user_usuario'] ?>!</div>
-            <a href="../controllers/logout.php">Salir</a>
-        </div>
+
+
     </nav>
 
     <br>
-    <div>
-        <a href="javascript:history.back()">Volver atrás</a>
-    </div>
+
 
     <div class="contBlan">
 
         <?php
         require_once('../controllers/database.php');
-        $user_id = $_SESSION['user_id'];
+
         $db = new Database();
         $conexion = $db->connect();
 
-        $id_objeto = $_GET["id_objeto"];
+        $id_objeto = $_GET["variable"];
         $sql = $conexion->prepare("SELECT * FROM inventario WHERE id_objeto = $id_objeto");
         $sql->execute();
 
@@ -127,7 +109,7 @@ $_SESSION['id_pag_act'] = 0;
                     foreach (explode(',', $datos->tags) as $tag) {
                         if ($tag != "") {
                     ?>
-                            <a href="../controllers/encontar_tag.php?type=tags&valor=<?= $tag ?>" class="badge"><?= $tag ?></a>
+                            <a href="#" class="badge"><?= $tag ?></a>
                     <?php }
                     }
                     ?>
@@ -136,23 +118,6 @@ $_SESSION['id_pag_act'] = 0;
 
                 <p><?= $datos->descripcion ?></p>
 
-
-
-
-                <div class="editar">
-                    <div class="icono_info">
-                        <a href="../controllers/eliminar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-trash-can"></i></a>
-                    </div>
-                    <div class="icono_info">
-                        <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-pencil"></i></a>
-                    </div>
-                    <div class="icono_info">
-                        <a href=""><i class="fa-sharp fa-solid fa-share-nodes"></i></a>
-                    </div>
-                    
-
-
-                </div>
 
 
 
@@ -258,39 +223,9 @@ $_SESSION['id_pag_act'] = 0;
 
     </div>
 
-    <ul class="footer__nav">
+    <div class="footer__nav">
 
-
-        <li class="nav__item nav__item--extra">
-            <h2 class="nav__title">Technology</h2>
-
-            <ul class="nav__ul nav__ul--extra">
-                <li>
-                    <a href="#">Inicio</a>
-                </li>
-
-                <li>
-                    <a href="#">Mangas</a>
-                </li>
-
-                <li>
-                    <a href="#">Libros</a>
-                </li>
-
-                <li>
-                    <a href="#">Videojuegos</a>
-                </li>
-
-                <li>
-                    <a href="#">Figuras</a>
-                </li>
-
-            </ul>
-        </li>
-
-
-    </ul>
-
+    </div>
 
 
     <div class="legal">
