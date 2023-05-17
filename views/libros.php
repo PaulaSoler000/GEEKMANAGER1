@@ -155,6 +155,22 @@ if (!empty($buscar)) {
                         <div class="icono">
                             <a href="info.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-circle-info"></i></a>
                         </div>
+                        <div class="icono">
+                            <a onclick="copyToClipboard('https://localhost/GEEKMANAGER1/views/compartir.php?variable=<?= $datos->id_objeto ?>')"><i class="fa-sharp fa-solid fa-share-nodes"></i></a>
+                        </div>
+
+                
+                        <script>
+                            function copyToClipboard(text) {
+                                navigator.clipboard.writeText(text)
+                                    .then(() => {
+                                        alert('Enlace copiado al portapapeles');
+                                    })
+                                    .catch((error) => {
+                                        console.error('Error al copiar el enlace:', error);
+                                    });
+                            }
+                        </script>
 
                     </div>
 

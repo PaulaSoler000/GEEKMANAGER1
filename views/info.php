@@ -131,6 +131,15 @@ $_SESSION['id_pag_act'] = 0;
                     <?php }
                     }
                     ?>
+
+                    <?php $sql = $conexion->prepare("SELECT * FROM galeria WHERE id_objeto_foto = $id_objeto_foto");
+                    $sql->execute(); 
+                    while ($dato_galeria = $sql->fetchObject()) { ?>
+                        <img  id="foto_galeria" src="<?= $dato_galeria->galeria?>" alt="">
+
+                    <?php }?>
+
+
                 </div>
 
 
@@ -149,7 +158,7 @@ $_SESSION['id_pag_act'] = 0;
                     <div class="icono_info">
                         <a href=""><i class="fa-sharp fa-solid fa-share-nodes"></i></a>
                     </div>
-                    
+
 
 
                 </div>

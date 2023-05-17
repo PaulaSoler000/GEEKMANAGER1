@@ -189,6 +189,13 @@ if (empty($_SESSION['user_id'])) {
 
             </div>
 
+            <div>
+                <label for="galeria">Galería de fotos:</label><br>
+                <input type="file" name="galeria" required>
+            </div>
+
+
+
 
         </form>
 
