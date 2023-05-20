@@ -223,6 +223,14 @@ input {
 	height: 5rem;
   }
 
-  .p-blanco{
-	color:white;
+  a {
+	color: #0097B2; /* Cambia el color de los enlaces a azul */
+  }
+  
+  a:hover {
+	color: #00aac8; /* Cambia el color de los enlaces cuando se les hace hover a rojo */
+  }
+  
+  a:visited {
+	color: #008097; /* Cambia el color de los enlaces visitados a morado */
   }
