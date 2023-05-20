@@ -169,8 +169,10 @@ if (!empty($buscar)) {
         <div class="contenedor">
 
             <?php
+            $hayElementos = false; // Variable para verificar si hay elementos
 
-            while ($datos = $sql->fetchObject()) { ?>
+            while ($datos = $sql->fetchObject()) {
+                $hayElementos = true; ?>
 
 
                 <div class="elemento">
@@ -209,7 +211,7 @@ if (!empty($buscar)) {
                             <a onclick="copyToClipboard('https://localhost/GEEKMANAGER1/views/compartir.php?variable=<?= $datos->id_objeto ?>')"><i class="fa-sharp fa-solid fa-share-nodes"></i></a>
                         </div>
 
-                
+
                         <script>
                             function copyToClipboard(text) {
                                 navigator.clipboard.writeText(text)
@@ -228,9 +230,19 @@ if (!empty($buscar)) {
                 </div>
 
             <?php }
+
+
             ?>
 
+           
+
         </div>
+
+        <?php if (!$hayElementos) { ?>
+                <div class="texto-vacio">
+                   ¡Añade tu primer elemento!
+                </div>
+            <?php } ?>
 
     </div>
 

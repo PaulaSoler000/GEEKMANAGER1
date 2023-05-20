@@ -537,6 +537,7 @@ textarea {
   max-width: 1200px;
   /* Ajusta el ancho máximo según tus necesidades */
   margin: 0 auto;
+  margin-bottom: 110px;
 }
 
 .contenedor {
@@ -851,6 +852,11 @@ input.centrar_buscar{
   color: #2f2f2f;
   background-color: #fff;
   border-top: 1px solid #e5e5e5;
+
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 .footer > * {
