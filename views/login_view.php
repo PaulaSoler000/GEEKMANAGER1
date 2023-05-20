@@ -40,6 +40,30 @@ $_SESSION['id_pag_act']=0;
 
   </div>
 
+  <!--footer-->
+<footer class="footer">
+    <div class="footer__addr logo">
+        <a href="../index.php">
+            <img src="../img/logo_con_nombre.png">
+        </a>
+
+    </div>
+
+    <div class="footer__nav">
+ 
+
+    </div>
+
+
+    <div class="legal">
+        <p>Copyright &copy; 2023 GeekManager. All rights reserved.</p>
+
+        <div class="legal__links">
+            <a href="#">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
 
 </body>
 

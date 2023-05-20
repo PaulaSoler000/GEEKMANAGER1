@@ -132,12 +132,7 @@ $_SESSION['id_pag_act'] = 0;
                     }
                     ?>
 
-                    <?php $sql = $conexion->prepare("SELECT * FROM galeria WHERE id_objeto_foto = $id_objeto_foto");
-                    $sql->execute(); 
-                    while ($dato_galeria = $sql->fetchObject()) { ?>
-                        <img  id="foto_galeria" src="<?= $dato_galeria->galeria?>" alt="">
-
-                    <?php }?>
+                 
 
 
                 </div>
@@ -156,8 +151,21 @@ $_SESSION['id_pag_act'] = 0;
                         <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-pencil"></i></a>
                     </div>
                     <div class="icono_info">
-                        <a href=""><i class="fa-sharp fa-solid fa-share-nodes"></i></a>
-                    </div>
+                            <a onclick="copyToClipboard('https://localhost/GEEKMANAGER1/views/compartir.php?variable=<?= $datos->id_objeto ?>')"><i class="fa-sharp fa-solid fa-share-nodes"></i></a>
+                        </div>
+
+
+                        <script>
+                            function copyToClipboard(text) {
+                                navigator.clipboard.writeText(text)
+                                    .then(() => {
+                                        alert('Enlace copiado al portapapeles');
+                                    })
+                                    .catch((error) => {
+                                        console.error('Error al copiar el enlace:', error);
+                                    });
+                            }
+                        </script>
 
 
 
