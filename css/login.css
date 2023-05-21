@@ -3,6 +3,8 @@
 *,
 *:before,
 *:after {
+	padding: 0;
+	margin: 0;
 	box-sizing: border-box;
 }
 
@@ -37,6 +39,7 @@ form {
 	border-radius: 10px;
 	box-shadow: 0 4px 10px 4px rgba(19, 35, 47, .3);
 	backdrop-filter: blur(10px);
+	margin-bottom: 110px;
 }
 
 label {
