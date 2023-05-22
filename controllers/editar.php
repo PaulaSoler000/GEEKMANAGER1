@@ -3,6 +3,7 @@ include_once("database.php");
 $user_id = $_SESSION['user_id'];
 $db = new Database();
 $id_objeto = $_GET["id_objeto"];
+$pagina_id = 0;
 $conexion = $db->connect();
 
 

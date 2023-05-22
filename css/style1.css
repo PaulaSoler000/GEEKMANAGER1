@@ -1000,3 +1000,14 @@ input.centrar_buscar {
   margin-bottom: 5%;
 }
 
+.galeria_objeto{
+  display: flex;
+  flex-direction: row;
+}
+
+img#galeria_objeto {
+    width: 20%;
+    margin-top: 5%;
+  }
+  
+

@@ -3,7 +3,7 @@ session_start();
 if (empty($_SESSION['user_id'])) {
     header('Location: ../index.php');
 }
-$_SESSION['id_pag_act'] = 0;
+$_SESSION["id_pag_act"] = 1;
 
 
 ?>
@@ -18,7 +18,7 @@ $_SESSION['id_pag_act'] = 0;
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="../img/logo_transparente.png">
     <!-- CSS-->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style1.css">
     <!-- iconos fontawesome-->
     <script src="https://kit.fontawesome.com/4a0af06348.js" crossorigin="anonymous"></script>
     <title>Info</title>
@@ -63,12 +63,14 @@ $_SESSION['id_pag_act'] = 0;
     <div class="contBlan">
 
         <?php
+        $id_objeto = $_GET["id_objeto"];
+        $_SESSION["id_objeto"] = $id_objeto;
+
         require_once('../controllers/database.php');
         $user_id = $_SESSION['user_id'];
         $db = new Database();
         $conexion = $db->connect();
 
-        $id_objeto = $_GET["id_objeto"];
         $sql = $conexion->prepare("SELECT * FROM inventario WHERE id_objeto = $id_objeto");
         $sql->execute();
 
@@ -124,6 +126,7 @@ $_SESSION['id_pag_act'] = 0;
 
                     <?php
 
+
                     foreach (explode(',', $datos->tags) as $tag) {
                         if ($tag != "") {
                     ?>
@@ -132,13 +135,42 @@ $_SESSION['id_pag_act'] = 0;
                     }
                     ?>
 
-                 
+                    <div>
+                        <p><?= $datos->descripcion ?></p>
+                    </div>
+                    <br>
+                    <br>
+
+                    <?php
+
+                    $sql_imagen = $conexion->prepare("SELECT * FROM galeria WHERE id_objeto = $id_objeto");
+                    $sql_imagen->execute();
+                    while ($dato_imagen = $sql_imagen->fetchObject()) { ?>
+
+                        <div class="galeria_objeto">
+                            <img id="galeria_objeto" src="<?= $dato_imagen->galeria ?>" alt="">
+                        </div>
+
+                    <?php }
+
+                    ?>
+
+                        <form action="../controllers/galeria.php?id_objeto=<?=$id_objeto?>" method="post" enctype="multipart/form-data">
+
+                            <div>
+                                <label for="galeria">Galería:</label><br>
+                                <input type="file" name="galeria">
+                            </div>
+
+                            <div>
+                                <button type="submit" class="boton">Añadir</button>
+                            </div>
+
+                        </form>
+
 
 
                 </div>
-
-
-                <p><?= $datos->descripcion ?></p>
 
 
 
@@ -151,21 +183,21 @@ $_SESSION['id_pag_act'] = 0;
                         <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-pencil"></i></a>
                     </div>
                     <div class="icono_info">
-                            <a onclick="copyToClipboard('https://localhost/GEEKMANAGER1/views/compartir.php?variable=<?= $datos->id_objeto ?>')"><i class="fa-sharp fa-solid fa-share-nodes"></i></a>
-                        </div>
+                        <a onclick="copyToClipboard('https://localhost/GEEKMANAGER1/views/compartir.php?variable=<?= $datos->id_objeto ?>')"><i class="fa-sharp fa-solid fa-share-nodes"></i></a>
+                    </div>
 
 
-                        <script>
-                            function copyToClipboard(text) {
-                                navigator.clipboard.writeText(text)
-                                    .then(() => {
-                                        alert('Enlace copiado al portapapeles');
-                                    })
-                                    .catch((error) => {
-                                        console.error('Error al copiar el enlace:', error);
-                                    });
-                            }
-                        </script>
+                    <script>
+                        function copyToClipboard(text) {
+                            navigator.clipboard.writeText(text)
+                                .then(() => {
+                                    alert('Enlace copiado al portapapeles');
+                                })
+                                .catch((error) => {
+                                    console.error('Error al copiar el enlace:', error);
+                                });
+                        }
+                    </script>
 
 
 
