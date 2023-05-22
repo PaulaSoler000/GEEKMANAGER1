@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2023 a las 20:35:58
+-- Tiempo de generación: 22-05-2023 a las 21:58:13
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -29,9 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `galeria` (
   `id_objeto` int(11) NOT NULL,
-  `id_objeto_foto` int(11) NOT NULL,
-  `foto` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+  `id_foto` int(11) NOT NULL,
+  `galeria` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `galeria`
+--
+
+INSERT INTO `galeria` (`id_objeto`, `id_foto`, `galeria`) VALUES
+(228, 4, ''),
+(228, 5, '../fotos/adventure time 1.jpg'),
+(228, 6, '../fotos/blueprint skz.jpg');
 
 -- --------------------------------------------------------
 
@@ -72,31 +81,8 @@ INSERT INTO `inventario` (`id_objeto`, `id_usuario`, `nombre_objeto`, `año_sali
 (224, 1, 'ss', 0000, 'libro', 'seminuevo', 'sin_empezar', '1, 2, 3, 4', '<p>2222</p>', '../fotos/adventure time 1.jpg', '', '', 0, '', '', '', '', '', ''),
 (225, 1, 'qqq', 0000, 'videojuego', 'seminuevo', 'terminado', '1, 2, 3, 4, 5', '<p>222222</p>', '../fotos/adventure time 1.jpg', '', '', 0, '', '', '', '', '', ''),
 (226, 1, '1234', 2000, 'figura', 'seminuevo', 'sin_empezar', '1, 2, 3, 4, 5', '<p>1</p>', '../fotos/adventure time 1.jpg', 'a', '', 0, 'b', '', 'c', 'd', '', ''),
-(227, 1, 'La llamada de Cuthulu', 1987, 'libro', 'seminuevo', 'terminado', 'LoveCraft, Mitologia, TerrorCosmico', '<p>Mejor libro de LoveCraft</p>', '../fotos/blueprint seungmin 1.jpg', 'Primera', 'Alfalguardia', 1, 'LoveCraft', 'Terror', '', '', '', ''),
+(227, 1, 'La llamada de Cuthulu', 1987, 'libro', 'seminuevo', 'terminado', 'LoveCraft, Mitologia, TerrorCosmico', '<p>Mejor libro de LoveCraft</p>', '../fotos/adventure time 1.jpg', 'Primera', 'Alfalguardia', 1, 'LoveCraft', 'Terror', '', '', '', ''),
 (228, 1, 'w', 1999, 'figura', 'nuevo', 'empezado', '4, 5, 3', '<p>22</p>', '../fotos/1.png', '1', '', 0, '', '', '1', '1', '', '');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tags`
---
-
-CREATE TABLE `tags` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tagsrelations`
---
-
-CREATE TABLE `tagsrelations` (
-  `id` int(11) NOT NULL,
-  `inventario_id` int(11) NOT NULL,
-  `tags_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -121,7 +107,9 @@ INSERT INTO `users` (`id`, `usuario`, `email`, `password`) VALUES
 (11, 'prueba2', 'paula@paula.com', '$2y$10$YhdhBjRZyQy9RTIOKNPuP.j38qwIHDSqyVvIDLf4FvDomPe1EChOW'),
 (12, 'paulasoler', 'hola@hola.com', '$2y$10$nMtG5ChOFJAertnA8hJ6FeWTGOT4gSBX0PKB/se88jXKJUBaYDDam'),
 (17, 'Alejandro', 'ale@pruebamail.com', '$2y$10$M0P4LTM3YfOgdA.nMfVfqu5FhESNLPGF80FXcKsITUZa81AJTghSK'),
-(20, 'paula@', 'paula@soler.com', '$2y$10$k4pZgiIcN7iw/oAgfsNLLOm1oa5gJUNPIoCGWCbISZSBeyqy3.V4C');
+(20, 'paula@', 'paula@soler.com', '$2y$10$k4pZgiIcN7iw/oAgfsNLLOm1oa5gJUNPIoCGWCbISZSBeyqy3.V4C'),
+(99, 'invitado', '', ''),
+(100, 'nuevo', 'nuevo@nuevo', '$2y$10$A8C0pD356XI0RqPtxKH7b.oDJWMxSSkuKmjf3S3W3fWvTbP5vEnrG');
 
 --
 -- Índices para tablas volcadas
@@ -131,6 +119,7 @@ INSERT INTO `users` (`id`, `usuario`, `email`, `password`) VALUES
 -- Indices de la tabla `galeria`
 --
 ALTER TABLE `galeria`
+  ADD PRIMARY KEY (`id_foto`),
   ADD KEY `id_objeto` (`id_objeto`);
 
 --
@@ -139,20 +128,6 @@ ALTER TABLE `galeria`
 ALTER TABLE `inventario`
   ADD PRIMARY KEY (`id_objeto`),
   ADD KEY `id_usuario` (`id_usuario`) USING BTREE;
-
---
--- Indices de la tabla `tags`
---
-ALTER TABLE `tags`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `tagsrelations`
---
-ALTER TABLE `tagsrelations`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tags_id` (`tags_id`),
-  ADD KEY `inventario_id` (`inventario_id`);
 
 --
 -- Indices de la tabla `users`
@@ -165,28 +140,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `galeria`
+--
+ALTER TABLE `galeria`
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_objeto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
-
---
--- AUTO_INCREMENT de la tabla `tags`
---
-ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `tagsrelations`
---
-ALTER TABLE `tagsrelations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_objeto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- Restricciones para tablas volcadas
@@ -203,18 +172,6 @@ ALTER TABLE `galeria`
 --
 ALTER TABLE `inventario`
   ADD CONSTRAINT `inventario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `tags`
---
-ALTER TABLE `tags`
-  ADD CONSTRAINT `tags_ibfk_1` FOREIGN KEY (`id`) REFERENCES `tagsrelations` (`tags_id`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `tagsrelations`
---
-ALTER TABLE `tagsrelations`
-  ADD CONSTRAINT `tagsrelations_ibfk_1` FOREIGN KEY (`inventario_id`) REFERENCES `inventario` (`id_objeto`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
