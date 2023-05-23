@@ -141,32 +141,60 @@ $_SESSION["id_pag_act"] = 1;
                     <br>
                     <br>
 
-                    <?php
+                    <div class="galeria_objeto">
+                        <div class="carrusel">
 
-                    $sql_imagen = $conexion->prepare("SELECT * FROM galeria WHERE id_objeto = $id_objeto");
-                    $sql_imagen->execute();
-                    while ($dato_imagen = $sql_imagen->fetchObject()) { ?>
+                            <?php
+                            $sql_imagen = $conexion->prepare("SELECT * FROM galeria WHERE id_objeto = $id_objeto");
+                            $sql_imagen->execute();
+                            while ($dato_imagen = $sql_imagen->fetchObject()) { ?>
 
-                        <div class="galeria_objeto">
-                            <img id="galeria_objeto" src="<?= $dato_imagen->galeria ?>" alt="">
+                                <div class="imagen_contenedor">
+                                    <img id="galeria_objeto" src="<?= $dato_imagen->galeria ?>" alt="">
+                                    <a href="../controllers/eliminar_galeria.php?id_foto=<?= $dato_imagen->id_foto ?>&id_objeto=<?= $id_objeto ?>" class="eliminar_foto">X</a>
+                                </div>
+
+                            <?php } ?>
+
+                        </div>
+                        <div class="slider-buttons">
+                            <button class="prev-button">&lt;</button>
+                            <button class="next-button">&gt;</button>
+                        </div>
+                    </div>
+
+                    <script>
+                        const carrusel = document.querySelector('.carrusel');
+                        const prevButton = document.querySelector('.prev-button');
+                        const nextButton = document.querySelector('.next-button');
+
+                        prevButton.addEventListener('click', () => {
+                            carrusel.scrollBy({
+                                left: -carrusel.offsetWidth,
+                                behavior: 'smooth'
+                            });
+                        });
+
+                        nextButton.addEventListener('click', () => {
+                            carrusel.scrollBy({
+                                left: carrusel.offsetWidth,
+                                behavior: 'smooth'
+                            });
+                        });
+                    </script>
+
+                    <form action="../controllers/galeria.php?id_objeto=<?= $id_objeto ?>" method="post" enctype="multipart/form-data">
+
+                        <div>
+                            <label for="galeria">Galería:</label><br>
+                            <input type="file" name="galeria">
                         </div>
 
-                    <?php }
+                        <div>
+                            <button type="submit" class="boton">Añadir</button>
+                        </div>
 
-                    ?>
-
-                        <form action="../controllers/galeria.php?id_objeto=<?=$id_objeto?>" method="post" enctype="multipart/form-data">
-
-                            <div>
-                                <label for="galeria">Galería:</label><br>
-                                <input type="file" name="galeria">
-                            </div>
-
-                            <div>
-                                <button type="submit" class="boton">Añadir</button>
-                            </div>
-
-                        </form>
+                    </form>
 
 
 

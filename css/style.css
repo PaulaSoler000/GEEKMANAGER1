@@ -653,10 +653,12 @@ a img#foto_objeto {
   justify-content: center;
   align-items: stretch;
   text-align: center;
+  gap: 2%;
 }
 
 img#foto_objeto_info {
-  width: 40%;
+  width: 100%;
+  height: auto;
   margin-top: 5%;
 }
 
@@ -1000,14 +1002,61 @@ input.centrar_buscar {
   margin-bottom: 5%;
 }
 
-.galeria_objeto{
+
+
+.carrusel {
   display: flex;
-  flex-direction: row;
+  overflow: hidden;
+}
+
+.imagen_contenedor {
+  flex: 0 0 20%;
+  transition: transform 0.5s ease;
+  position: relative;
+}
+
+.galeria_objeto:hover .imagen_contenedor {
+  transform: translateX(-20%);
 }
 
 img#galeria_objeto {
-    width: 20%;
-    margin-top: 5%;
-  }
-  
+  width: 100%;
+  height: auto;
+}
 
+.eliminar_foto {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red;
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.slider-buttons {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.prev-button,
+.next-button {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  color: red;
+}
+
+.prev-button:focus,
+.next-button:focus {
+  outline: none;
+}
+
+.prev-button {
+  margin-right: 10px;
+}
+
+.next-button {
+  margin-left: 10px;
+}

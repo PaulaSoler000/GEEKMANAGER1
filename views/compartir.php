@@ -117,6 +117,47 @@ if (empty($_SESSION['user_id'])) {
 
                 <p><?= $datos->descripcion ?></p>
 
+                <div class="galeria_objeto">
+                        <div class="carrusel">
+
+                            <?php
+                            $sql_imagen = $conexion->prepare("SELECT * FROM galeria WHERE id_objeto = $id_objeto");
+                            $sql_imagen->execute();
+                            while ($dato_imagen = $sql_imagen->fetchObject()) { ?>
+
+                                <div class="imagen_contenedor">
+                                    <img id="galeria_objeto" src="<?= $dato_imagen->galeria ?>" alt="">
+                                </div>
+
+                            <?php } ?>
+
+                        </div>
+                        <div class="slider-buttons">
+                            <button class="prev-button">&lt;</button>
+                            <button class="next-button">&gt;</button>
+                        </div>
+                    </div>
+
+                    <script>
+                        const carrusel = document.querySelector('.carrusel');
+                        const prevButton = document.querySelector('.prev-button');
+                        const nextButton = document.querySelector('.next-button');
+
+                        prevButton.addEventListener('click', () => {
+                            carrusel.scrollBy({
+                                left: -carrusel.offsetWidth,
+                                behavior: 'smooth'
+                            });
+                        });
+
+                        nextButton.addEventListener('click', () => {
+                            carrusel.scrollBy({
+                                left: carrusel.offsetWidth,
+                                behavior: 'smooth'
+                            });
+                        });
+                    </script>
+
 
 
 
