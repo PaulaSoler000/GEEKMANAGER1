@@ -18,7 +18,7 @@ $_SESSION["id_pag_act"] = 1;
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="../img/logo_transparente.png">
     <!-- CSS-->
-    <link rel="stylesheet" href="../css/style1.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- iconos fontawesome-->
     <script src="https://kit.fontawesome.com/4a0af06348.js" crossorigin="anonymous"></script>
     <title>Info</title>
