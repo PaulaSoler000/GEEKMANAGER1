@@ -199,7 +199,7 @@ if (!empty($buscar)) {
 
                     <div class="editar">
                         <div class="icono">
-                            <a href="../controllers/eliminar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-trash-can"></i></a>
+                            <a href="#" class="eliminar-btn"><i class="fa-solid fa-trash-can"></i></a>
                         </div>
                         <div class="icono">
                             <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-pencil"></i></a>
@@ -211,7 +211,7 @@ if (!empty($buscar)) {
                             <a onclick="copyToClipboard('https://localhost/GEEKMANAGER1/views/compartir.php?variable=<?= $datos->id_objeto ?>')"><i class="fa-sharp fa-solid fa-share-nodes"></i></a>
                         </div>
 
-
+                        
                         <script>
                             function copyToClipboard(text) {
                                 navigator.clipboard.writeText(text)
@@ -229,20 +229,33 @@ if (!empty($buscar)) {
 
                 </div>
 
+                <section class="modal3">
+                    <div class="modal__container" id="modal-<?= $datos->id_objeto ?>">
+                        <h2 class="modal__title">¿Seguro que quieres eliminarlo?</h2>
+
+                        <p>¿Seguro que quieres eliminar el objeto seleccionado? El cambio será permanente.</p>
+
+                        <div>
+                            <a href="../controllers/eliminar.php?id_objeto=<?= $datos->id_objeto ?>">Eliminar</a>
+                            <button class="modal__close3">Cerrar</button>
+                        </div>
+                    </div>
+              </section>
+
             <?php }
 
 
             ?>
 
-           
+
 
         </div>
 
         <?php if (!$hayElementos) { ?>
-                <div class="texto-vacio">
-                   ¡Añade tu primer elemento!
-                </div>
-            <?php } ?>
+            <div class="texto-vacio">
+                ¡Añade tu primer elemento!
+            </div>
+        <?php } ?>
 
     </div>
 
@@ -252,18 +265,7 @@ if (!empty($buscar)) {
 
     <!--eliminar-->
 
-    <section class="modal3 ">
-        <div class="modal__container">
-            <h2 class="modal__title">¿Seguro que quieres eliminarlo?</h2>
 
-            <p>¿Seguro que quieres eliminar el objeto seleccionado? El cambio será permanente.</p>
-
-            <div>
-                <button type="submit" class="eliminar" id="guardar">Eliminar</button>
-                <button class="modal__close3">Cerrar</button>
-            </div>
-        </div>
-    </section>
 
     <div class="paginas">
         <?php

@@ -15,7 +15,7 @@ hamburger.addEventListener('click', () => {
 });
 
 
-//modal editar
+/* //modal editar
 const openModal2 = document.querySelector('.hero__cta2');
 const modal2 = document.querySelector('.modal2');
 const closeModal2 = document.querySelector('.modal__close2');
@@ -28,7 +28,7 @@ openModal2.addEventListener('click', (e) => {
 closeModal2.addEventListener('click', (e) => {
     e.preventDefault();
     modal2.classList.remove('modal--show2');
-});
+}); */
 
 //modal eliminar
 const openModal3 = document.querySelector('.hero__cta3');
@@ -45,8 +45,26 @@ closeModal3.addEventListener('click', (e) => {
     modal3.classList.remove('modal--show3');
 });
 
+/* const eliminarBtns = document.querySelectorAll('.eliminar-btn');
+const closeModals = document.querySelectorAll('.modal__close3');
+
+eliminarBtns.forEach((eliminarBtn) => {
+  eliminarBtn.addEventListener('click', (event) => {
+    const objetoContainer = eliminarBtn.closest('.objeto-container');
+    const modal = objetoContainer.querySelector('.modal3');
+    modal.classList.add('modal--show3');
+  });
+});
+
+closeModals.forEach((closeModal) => {
+  closeModal.addEventListener('click', (event) => {
+    const modal = closeModal.closest('.modal3');
+    modal.classList.remove('modal--show3');
+  });
+}); */
+
 //modal añadir
-const openModal = document.querySelector('.hero__cta');
+/* const openModal = document.querySelector('.hero__cta');
 const modal = document.querySelector('.modal');
 const closeModal = document.querySelector('.modal__close');
 
@@ -59,4 +77,4 @@ closeModal.addEventListener('click', (e) => {
     e.preventDefault();
     modal.classList.remove('modal--show');
 });
-
+ */

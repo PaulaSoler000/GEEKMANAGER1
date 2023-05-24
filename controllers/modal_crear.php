@@ -45,18 +45,18 @@ if (!empty($_POST["crear_objeto"])) {
     $estado_objeto = $_POST["estado_objeto"];
     $curso = $_POST["curso"];
     $descripcion = $_POST["descripcion"];
-  
+
     $data = json_decode($_POST["tags"], true);
     $tagsArray = array();
-    
-    foreach ($data as $item) {
-        $tagsArray[] = $item['value'];
-    }
-    
-    $tags = implode(', ', $tagsArray);
-    
 
-    
+    foreach ($data as $item) {
+      $tagsArray[] = $item['value'];
+    }
+
+    $tags = implode(', ', $tagsArray);
+
+
+
 
     //opciones
     $edicion = $_POST["edicion"];
@@ -90,31 +90,27 @@ if (!empty($_POST["crear_objeto"])) {
       } else if ($tipo_objeto == "videojuego") {
         $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, genero, plataforma, compañia, tags) VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)");
         $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $genero, $plataforma, $compañia, $tags]);
-      }  else if ($tipo_objeto == "manga") {
+      } else if ($tipo_objeto == "manga") {
         $sql = $conexion->prepare("INSERT INTO inventario(nombre_objeto, año_salida, tipo_objeto, estado_objeto, curso, descripcion, foto, id_usuario, edicion, editorial, volumen, autor, genero, tags) VALUES (?,?, ?,?,?,?,?,?,?,?,?,?,?,?)");
         $sql->execute([$nombre_objeto, $año_salida, $tipo_objeto, $estado_objeto, $curso, $descripcion, $imagen, $user_id, $edicion, $editorial, $volumen, $autor, $genero, $tags]);
       }
 
+     
 
       if ($sql) {
         echo 'Objeto añadido';
+        $sql = $conexion->prepare("SELECT id_objeto from inventario order by id_objeto desc limit 1");
+        $sql->execute();
+  
+        $idpenultimo=$sql ->fetchObject();
+        $idultimo = $idpenultimo -> id_objeto;
 
-
-        if ($tipo_objeto == 'libro') {
-          header("Location: ../views/libros.php");
-        } else if ($tipo_objeto == 'manga') {
-          header("Location: ../views/mangas.php");
-        } else if ($tipo_objeto == 'videojuego') {
-          header("Location: ../views/videojuegos.php");
-        } else if ($tipo_objeto == 'figura') {
-          header("Location: ../views/figuras.php");
-        } 
-      } else {
-        echo 'Error al añadir objeto: ' . $db->error;
+        header("Location: ../views/info.php?id_objeto=$idultimo");
       }
 
       ob_flush();
     }
   }
 }
+
 ?>
