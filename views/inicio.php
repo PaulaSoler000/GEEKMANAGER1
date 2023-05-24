@@ -199,7 +199,7 @@ if (!empty($buscar)) {
 
                     <div class="editar">
                         <div class="icono">
-                            <a href="#" class="eliminar-btn"><i class="fa-solid fa-trash-can"></i></a>
+                            <a  href="../controllers/eliminar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-trash-can"></i></a>
                         </div>
                         <div class="icono">
                             <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-pencil"></i></a>

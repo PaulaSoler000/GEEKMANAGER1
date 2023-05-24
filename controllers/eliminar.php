@@ -6,6 +6,9 @@ $conexion = $db->connect();
 
 $id_objeto = $_GET["id_objeto"];
 
+$sql = $conexion-> prepare("DELETE FROM galeria WHERE id_objeto = ?;");
+$sql->execute([$id_objeto]);
+
 $sql = $conexion->prepare("SELECT * FROM inventario WHERE id_objeto = :id_objeto");
 $sql->bindParam(':id_objeto', $id_objeto);
 $sql->execute();
