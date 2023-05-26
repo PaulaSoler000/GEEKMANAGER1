@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2023 a las 21:58:13
+-- Tiempo de generación: 26-05-2023 a las 20:46:08
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -38,9 +38,8 @@ CREATE TABLE `galeria` (
 --
 
 INSERT INTO `galeria` (`id_objeto`, `id_foto`, `galeria`) VALUES
-(228, 4, ''),
-(228, 5, '../fotos/adventure time 1.jpg'),
-(228, 6, '../fotos/blueprint skz.jpg');
+(237, 18, '../fotos/adventure time 1.jpg'),
+(237, 19, '../fotos/genshin_prueba.jpg');
 
 -- --------------------------------------------------------
 
@@ -78,11 +77,11 @@ INSERT INTO `inventario` (`id_objeto`, `id_usuario`, `nombre_objeto`, `año_sali
 (187, 2, '2', 0000, 'libro', 'seminuevo', 'empezado', '', '2', '2', '2', '2', 2, '2', '2', '', '', '', ''),
 (222, 1, 'hola 2', 2001, 'figura', 'nuevo', 'sin_empezar', '123, 4, 3, 5, 1, 15', '<p>111</p>', '../fotos/adventure time 1.jpg', 'q', '', 0, 'q', '', 'q', 'q', '', ''),
 (223, 1, 'hola1', 0000, 'manga', 'seminuevo', 'sin_empezar', '1, 2, 3, 4', '<p>1111</p>', '../fotos/adventure time 1.jpg', '', '', 0, '', '', '', '', '', ''),
-(224, 1, 'ss', 0000, 'libro', 'seminuevo', 'sin_empezar', '1, 2, 3, 4', '<p>2222</p>', '../fotos/adventure time 1.jpg', '', '', 0, '', '', '', '', '', ''),
-(225, 1, 'qqq', 0000, 'videojuego', 'seminuevo', 'terminado', '1, 2, 3, 4, 5', '<p>222222</p>', '../fotos/adventure time 1.jpg', '', '', 0, '', '', '', '', '', ''),
-(226, 1, '1234', 2000, 'figura', 'seminuevo', 'sin_empezar', '1, 2, 3, 4, 5', '<p>1</p>', '../fotos/adventure time 1.jpg', 'a', '', 0, 'b', '', 'c', 'd', '', ''),
-(227, 1, 'La llamada de Cuthulu', 1987, 'libro', 'seminuevo', 'terminado', 'LoveCraft, Mitologia, TerrorCosmico', '<p>Mejor libro de LoveCraft</p>', '../fotos/adventure time 1.jpg', 'Primera', 'Alfalguardia', 1, 'LoveCraft', 'Terror', '', '', '', ''),
-(228, 1, 'w', 1999, 'figura', 'nuevo', 'empezado', '4, 5, 3', '<p>22</p>', '../fotos/1.png', '1', '', 0, '', '', '1', '1', '', '');
+(225, 1, 'qqq', 1999, 'videojuego', 'seminuevo', 'terminado', '1, 2, 3, 4, 5', '<p><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\"</span><br></p>', '../fotos/adventure time 1.jpg', '2', '', 0, '', '2', '', '', '2', '2'),
+(234, 1, 'hola', 1904, 'videojuego', 'seminuevo', 'terminado', '222, 2, 5, hola, adios, buenas tardes, kill, 2u', '<p>weeeee</p>', '../fotos/3.png', 'limitada', '', 0, '', 'fnatasía', '', '', 'ssss', 'sssss'),
+(235, 1, 'adios', 1977, 'libro', 'seminuevo', 'terminado', 'fnatasia, love, weee, adios, hola', '<p>qqqqqqoqoqoqoqq</p>', '../fotos/2.png', 'lol', 'lollll', 1111, 'wwwweee', 'fantasia', '', '', '', ''),
+(236, 1, 'Genshin Impact', 2020, 'videojuego', 'nuevo', 'sin_empezar', 'Genshin, traveler, love, kill, hola', '<p><span style=\"text-align: start;\"><em>Genshin Impact</em> es un videojuego de rol de acción de mundo abierto y gratuito, con una mecánica de monetización de gacha para conseguir elementos adicionales como <strong>personajes especiales y armas.</strong></span><br></p>', '../fotos/genshin_prueba.jpg', 'limitada', '', 0, '', 'aventura', '', '', 'andorid', 'Hoyoverse'),
+(237, 101, 'genshin impact', 2021, 'videojuego', 'nuevo', 'sin_empezar', 'love, genshin, impact, traveler main', '<p>hola, este es mi juego</p>', '../fotos/genshin_prueba.jpg', 'primera', '', 0, '', 'aventura', '', '', 'pc', 'hoyoverse');
 
 -- --------------------------------------------------------
 
@@ -109,7 +108,8 @@ INSERT INTO `users` (`id`, `usuario`, `email`, `password`) VALUES
 (17, 'Alejandro', 'ale@pruebamail.com', '$2y$10$M0P4LTM3YfOgdA.nMfVfqu5FhESNLPGF80FXcKsITUZa81AJTghSK'),
 (20, 'paula@', 'paula@soler.com', '$2y$10$k4pZgiIcN7iw/oAgfsNLLOm1oa5gJUNPIoCGWCbISZSBeyqy3.V4C'),
 (99, 'invitado', '', ''),
-(100, 'nuevo', 'nuevo@nuevo', '$2y$10$A8C0pD356XI0RqPtxKH7b.oDJWMxSSkuKmjf3S3W3fWvTbP5vEnrG');
+(100, 'nuevo', 'nuevo@nuevo', '$2y$10$A8C0pD356XI0RqPtxKH7b.oDJWMxSSkuKmjf3S3W3fWvTbP5vEnrG'),
+(101, 'paulasoler', 'hola@paula.com', '$2y$10$Hlbx6y6ZK0jZ1r22iUW0R.lGj1Bx7Se0UKgcLA0kZzQWCjw/aQ3lW');
 
 --
 -- Índices para tablas volcadas
@@ -143,19 +143,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `galeria`
 --
 ALTER TABLE `galeria`
-  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_objeto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;
+  MODIFY `id_objeto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=238;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- Restricciones para tablas volcadas
