@@ -599,6 +599,10 @@ a img#foto_objeto {
   font-size: 130%;
 }
 
+.icono a{
+  color:#0097b2
+}
+
 /* Responsive de elementos, letras más grandes */
 
 @media screen and (max-width: 1020px) {
@@ -787,6 +791,10 @@ input.centrar_buscar {
   border: 1px solid #818181;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.icono_info a{
+  color:#0097b2
 }
 
 .popup {

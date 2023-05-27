@@ -155,7 +155,7 @@ if (!empty($buscar)) {
                             <a onclick="copyToClipboard('https://localhost/GEEKMANAGER1/views/compartir.php?variable=<?= $datos->id_objeto ?>')"><i class="fa-sharp fa-solid fa-share-nodes"></i></a>
                         </div>
 
-                
+
                         <script>
                             function copyToClipboard(text) {
                                 navigator.clipboard.writeText(text)
@@ -178,134 +178,6 @@ if (!empty($buscar)) {
 
     </div>
 
-    <!--modal añadir-->
-
-    <section class="modal ">
-        <div class="modal__container">
-            <h2 class="modal__title">Añadir</h2>
-
-            <form action="">
-
-                <div>
-                    <label for="nombre">Nombre:</label><br>
-                    <input type="text"><br>
-                </div>
-
-                <div>
-                    <label for="tipo">Tipo de objeto:</label><br>
-                    <select id="tipo" name="tipo">
-                        <option selected disabled value="">Elija tipo</option>
-                        <option value="manga">Manga</option>
-                        <option value="libro">Libro</option>
-                        <option value="videojuego">Videojuego</option>
-                        <option value="figura">Figura</option>
-                    </select><br>
-                </div>
-
-                <div>
-                    <label for="estado">Estado del objeto:</label><br>
-                    <select id="estado" name="estado">
-                        <option selected disabled value="">Elija estado</option>
-                        <option value="nuevo">Nuevo</option>
-                        <option value="seminuevo">Seminuevo</option>
-                        <option value="usado">Usado</option>
-                    </select><br>
-                </div>
-
-                <div>
-                    <label for="estado">Curso del objeto:</label><br>
-                    <select id="estado" name="estado">
-                        <option selected disabled value="">Elija curso</option>
-                        <option value="sin_empezar">Sin empezar</option>
-                        <option value="empezado">Empezado</option>
-                        <option value="acabado">Acabado</option>
-                    </select><br>
-                </div>
-
-                <div>
-                    <label for="">Descripción:</label><br>
-                    <textarea name="" id=""></textarea>
-                </div>
-
-                <div>
-                    <label for="">Foto:</label><br>
-                    <input type="file">
-                </div>
-
-
-            </form>
-
-            <div>
-                <button type="submit" class="boton" id="guardar">Añadir</button>
-                <button class="modal__close">Cerrar</button>
-            </div>
-        </div>
-    </section>
-
-    <!--modal editar-->
-
-    <section class="modal2 ">
-        <div class="modal__container">
-            <h2 class="modal__title">Editar</h2>
-
-            <form action="">
-
-                <div>
-                    <label for="nombre">Nombre:</label><br>
-                    <input type="text"><br>
-                </div>
-
-                <div>
-                    <label for="tipo">Tipo de objeto:</label><br>
-                    <select id="tipo" name="tipo">
-                        <option selected disabled value="">Elija tipo</option>
-                        <option value="manga">Manga</option>
-                        <option value="libro">Libro</option>
-                        <option value="videojuego">Videojuego</option>
-                        <option value="figura">Figura</option>
-                    </select><br>
-                </div>
-
-                <div>
-                    <label for="estado">Estado del objeto:</label><br>
-                    <select id="estado" name="estado">
-                        <option selected disabled value="">Elija estado</option>
-                        <option value="nuevo">Nuevo</option>
-                        <option value="seminuevo">Seminuevo</option>
-                        <option value="usado">Usado</option>
-                    </select><br>
-                </div>
-
-                <div>
-                    <label for="estado">Curso del objeto:</label><br>
-                    <select id="estado" name="estado">
-                        <option selected disabled value="">Elija curso</option>
-                        <option value="sin_empezar">Sin empezar</option>
-                        <option value="empezado">Empezado</option>
-                        <option value="acabado">Acabado</option>
-                    </select><br>
-                </div>
-
-                <div>
-                    <label for="">Descripción:</label><br>
-                    <textarea name="" id=""></textarea>
-                </div>
-
-                <div>
-                    <label for="">Foto:</label><br>
-                    <input type="file">
-                </div>
-
-
-
-            </form>
-
-            <div>
-                <button type="submit" class="boton" id="guardar">Editar</button>
-                <button class="modal__close2">Cerrar</button>
-            </div>
-        </div>
-    </section>
 
 
     <!--eliminar-->
@@ -348,27 +220,27 @@ if (!empty($buscar)) {
 
 
             <li class="nav__item nav__item--extra">
-                <h2 class="nav__title">Technology</h2>
+                <h2 class="nav__title">Navegar</h2>
 
                 <ul class="nav__ul nav__ul--extra">
                     <li>
-                        <a href="#">Inicio</a>
+                        <a href="inicio.php">Inicio</a>
                     </li>
 
                     <li>
-                        <a href="#">Mangas</a>
+                        <a href="mangas.php">Mangas</a>
                     </li>
 
                     <li>
-                        <a href="#">Libros</a>
+                        <a href="libros.php">Libros</a>
                     </li>
 
                     <li>
-                        <a href="#">Videojuegos</a>
+                        <a href="videojuegos.php">Videojuegos</a>
                     </li>
 
                     <li>
-                        <a href="#">Figuras</a>
+                        <a href="figuras.php">Figuras</a>
                     </li>
 
                 </ul>
