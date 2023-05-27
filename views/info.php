@@ -21,6 +21,9 @@ $_SESSION["id_pag_act"] = 1;
     <link rel="stylesheet" href="../css/style.css">
     <!-- iconos fontawesome-->
     <script src="https://kit.fontawesome.com/4a0af06348.js" crossorigin="anonymous"></script>
+
+    <link href="../node_modules/lightbox.js-0.0.6/lightbox/lightbox.min.css" rel="stylesheet">
+
     <title>Info</title>
 
 </head>
@@ -149,9 +152,13 @@ $_SESSION["id_pag_act"] = 1;
                             $sql_imagen->execute();
                             while ($dato_imagen = $sql_imagen->fetchObject()) { ?>
 
+
                                 <div class="imagen_contenedor">
-                                    <img id="galeria_objeto" src="<?= $dato_imagen->galeria ?>" alt="">
-                                    <a href="../controllers/eliminar_galeria.php?id_foto=<?= $dato_imagen->id_foto ?>&id_objeto=<?= $id_objeto ?>" class="eliminar_foto">X</a>
+                                    <a id="btn_galeria" href="<?= $dato_imagen->galeria ?>" data-lightbox="gallery" data-image-alt="Descripción de la imagen">
+                                        <img id="galeria_objeto" src="<?= $dato_imagen->galeria ?>" alt="Imagen">
+                                        <a href="../controllers/eliminar_galeria.php?id_foto=<?= $dato_imagen->id_foto ?>&id_objeto=<?= $id_objeto ?>" class="eliminar_foto">X</a>
+                                    </a>
+                                    
                                 </div>
 
                             <?php } ?>
@@ -243,72 +250,6 @@ $_SESSION["id_pag_act"] = 1;
 
 
 
-<!--modal editar-->
-
-<section class="modal2 ">
-    <div class="modal__container">
-        <h2 class="modal__title">Editar</h2>
-
-        <form action="">
-
-            <div>
-                <label for="nombre">Nombre:</label><br>
-                <input type="text"><br>
-            </div>
-
-            <div>
-                <label for="tipo">Tipo de objeto:</label><br>
-                <select id="tipo" name="tipo">
-                    <option selected disabled value="">Elija tipo</option>
-                    <option value="manga">Manga</option>
-                    <option value="libro">Libro</option>
-                    <option value="videojuego">Videojuego</option>
-                    <option value="figura">Figura</option>
-                </select><br>
-            </div>
-
-            <div>
-                <label for="estado">Estado del objeto:</label><br>
-                <select id="estado" name="estado">
-                    <option selected disabled value="">Elija estado</option>
-                    <option value="nuevo">Nuevo</option>
-                    <option value="seminuevo">Seminuevo</option>
-                    <option value="usado">Usado</option>
-                </select><br>
-            </div>
-
-            <div>
-                <label for="estado">Curso del objeto:</label><br>
-                <select id="estado" name="estado">
-                    <option selected disabled value="">Elija curso</option>
-                    <option value="sin_empezar">Sin empezar</option>
-                    <option value="empezado">Empezado</option>
-                    <option value="acabado">Acabado</option>
-                </select><br>
-            </div>
-
-            <div>
-                <label for="">Descripción:</label><br>
-                <textarea name="" id=""></textarea>
-            </div>
-
-            <div>
-                <label for="">Foto:</label><br>
-                <input type="file">
-            </div>
-
-
-
-        </form>
-
-        <div>
-            <button type="submit" class="boton" id="guardar">Editar</button>
-            <button class="modal__close2">Cerrar</button>
-        </div>
-    </div>
-</section>
-
-
 <!--eliminar-->
 
 <section class="modal3 ">
@@ -383,7 +324,8 @@ $_SESSION["id_pag_act"] = 1;
 
 
 <script src="../js/app.js"></script>
-
+<script src="../node_modules/lightbox.js-0.0.6/lightbox/lightbox.min.js"></script>
+<script src="../node_modules/trumbowyg/dist/trumbowyg.min.js"></script>
 </body>
 
 </html>
