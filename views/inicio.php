@@ -199,7 +199,7 @@ if (!empty($buscar)) {
 
                     <div class="editar">
                         <div class="icono">
-                            <a  href="../controllers/eliminar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-trash-can"></i></a>
+                            <a href="../controllers/eliminar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-trash-can"></i></a>
                         </div>
                         <div class="icono">
                             <a href="formulario_editar.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-pencil"></i></a>
@@ -208,10 +208,11 @@ if (!empty($buscar)) {
                             <a href="info.php?id_objeto=<?= $datos->id_objeto ?>"><i class="fa-solid fa-circle-info"></i></a>
                         </div>
                         <div class="icono">
-                            <a onclick="copyToClipboard('https://localhost/GEEKMANAGER1/views/compartir.php?variable=<?= $datos->id_objeto ?>')"><i class="fa-sharp fa-solid fa-share-nodes"></i></a>
+                            <a onclick="copyToClipboard('https://localhost/GEEKMANAGER1/views/compartir.php?variable=<?= $datos->id_objeto ?>')"><i class="fa-sharp fa-solid fa-share-nodes"></i>
+                            </a>
                         </div>
 
-                        
+
                         <script>
                             function copyToClipboard(text) {
                                 navigator.clipboard.writeText(text)
@@ -240,7 +241,7 @@ if (!empty($buscar)) {
                             <button class="modal__close3">Cerrar</button>
                         </div>
                     </div>
-              </section>
+                </section>
 
             <?php }
 
