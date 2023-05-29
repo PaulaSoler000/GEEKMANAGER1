@@ -53,71 +53,75 @@ if (empty($_SESSION['user_id'])) {
         $sql = $conexion->prepare("SELECT * FROM inventario WHERE id_objeto = $id_objeto");
         $sql->execute();
 
-        while ($datos = $sql->fetchObject()) { ?>
 
-            <div class="img_info">
+        while ($datos = $sql->fetchObject()) {
+            if ($datos->compartir == 1) {
 
+        ?>
 
-                <img id="foto_objeto_info" src="<?= $datos->foto ?>" alt="">
-
-
-            </div>
+                <div class="img_info">
 
 
-            <div class="info_objeto">
+                    <img id="foto_objeto_info" src="<?= $datos->foto ?>" alt="">
 
 
-                <p><?= $datos->nombre_objeto ?></p>
-
-
-                <div class="etiqueta_info">
-                    <span class="badge"><?= $datos->tipo_objeto ?></span>
-                    <span class="badge"><?= $datos->año_salida ?></span>
-                    <span class="badge"><?= $datos->estado_objeto ?></span>
-                    <span class="badge"><?= $datos->curso ?></span>
-                    <?php if ($datos->edicion != "" && $datos->edicion != null) : ?>
-                        <span class="badge"><?= $datos->edicion ?></span>
-                    <?php endif; ?>
-                    <?php if ($datos->editorial != "") : ?>
-                        <span class="badge"><?= $datos->editorial ?></span>
-                    <?php endif; ?>
-                    <?php if ($datos->volumen != 0) : ?>
-                        <span class="badge"><?= $datos->volumen ?></span>
-                    <?php endif; ?>
-                    <?php if ($datos->autor != "") : ?>
-                        <span class="badge"><?= $datos->autor ?></span>
-                    <?php endif; ?>
-                    <?php if ($datos->genero != "") : ?>
-                        <span class="badge"><?= $datos->genero ?></span>
-                    <?php endif; ?>
-                    <?php if ($datos->altura != "") : ?>
-                        <span class="badge"><?= $datos->altura ?></span>
-                    <?php endif; ?>
-                    <?php if ($datos->marca != "") : ?>
-                        <span class="badge"><?= $datos->marca ?></span>
-                    <?php endif; ?>
-                    <?php if ($datos->plataforma != "") : ?>
-                        <span class="badge"><?= $datos->plataforma ?></span>
-                    <?php endif; ?>
-                    <?php if ($datos->compañia != "" && $datos->compañia != null) : ?>
-                        <span class="badge"><?= $datos->compañia ?></span>
-                    <?php endif; ?>
-
-                    <?php
-
-                    foreach (explode(',', $datos->tags) as $tag) {
-                        if ($tag != "") {
-                    ?>
-                            <a href="#" class="badge"><?= $tag ?></a>
-                    <?php }
-                    }
-                    ?>
                 </div>
 
 
-                <p><?= $datos->descripcion ?></p>
+                <div class="info_objeto">
 
-                <div class="galeria_objeto">
+
+                    <p><?= $datos->nombre_objeto ?></p>
+
+
+                    <div class="etiqueta_info">
+                        <span class="badge"><?= $datos->tipo_objeto ?></span>
+                        <span class="badge"><?= $datos->año_salida ?></span>
+                        <span class="badge"><?= $datos->estado_objeto ?></span>
+                        <span class="badge"><?= $datos->curso ?></span>
+                        <?php if ($datos->edicion != "" && $datos->edicion != null) : ?>
+                            <span class="badge"><?= $datos->edicion ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->editorial != "") : ?>
+                            <span class="badge"><?= $datos->editorial ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->volumen != 0) : ?>
+                            <span class="badge"><?= $datos->volumen ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->autor != "") : ?>
+                            <span class="badge"><?= $datos->autor ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->genero != "") : ?>
+                            <span class="badge"><?= $datos->genero ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->altura != "") : ?>
+                            <span class="badge"><?= $datos->altura ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->marca != "") : ?>
+                            <span class="badge"><?= $datos->marca ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->plataforma != "") : ?>
+                            <span class="badge"><?= $datos->plataforma ?></span>
+                        <?php endif; ?>
+                        <?php if ($datos->compañia != "" && $datos->compañia != null) : ?>
+                            <span class="badge"><?= $datos->compañia ?></span>
+                        <?php endif; ?>
+
+                        <?php
+
+                        foreach (explode(',', $datos->tags) as $tag) {
+                            if ($tag != "") {
+                        ?>
+                                <a href="#" class="badge"><?= $tag ?></a>
+                        <?php }
+                        }
+                        ?>
+                    </div>
+
+
+                    <p><?= $datos->descripcion ?></p>
+
+                    <div class="galeria_objeto">
                         <div class="carrusel">
 
                             <?php
@@ -161,11 +165,16 @@ if (empty($_SESSION['user_id'])) {
 
 
 
-            </div>
+                </div>
 
 
     </div>
-<?php }
+<?php } else {
+
+                echo "no se puede ver el objeto";
+            }
+        }
+
 ?>
 
 
@@ -199,8 +208,8 @@ if (empty($_SESSION['user_id'])) {
     </div>
 
     <div class="footer__nav">
-        
-       <p> <a class="button_new" href="signup_view.php">Regístrate gratis</a> y crea tu propia coleccion</p>
+
+        <p> <a class="button_new" href="signup_view.php">Regístrate gratis</a> y crea tu propia coleccion</p>
 
 
     </div>
