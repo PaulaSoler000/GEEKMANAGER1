@@ -16,15 +16,6 @@
         $this->charset = 'utf8mb4';
 
     }
-
-/*     public function __construct(){
-        $this->host = 'localhost';
-        $this->db = 'id20762685_geekmanager';
-        $this->user = 'id20762685_paulasoler111';
-        $this->password = 'victoriaV1.';
-        $this->charset = 'utf8mb4';
-
-    } */
     
     function connect(){
         try{

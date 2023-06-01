@@ -15,7 +15,7 @@ hamburger.addEventListener('click', () => {
 });
 
 
-//modal editar
+/* //modal editar
 const openModal2 = document.querySelector('.hero__cta2');
 const modal2 = document.querySelector('.modal2');
 const closeModal2 = document.querySelector('.modal__close2');
@@ -28,7 +28,7 @@ openModal2.addEventListener('click', (e) => {
 closeModal2.addEventListener('click', (e) => {
     e.preventDefault();
     modal2.classList.remove('modal--show2');
-}); 
+}); */
 
 //modal eliminar
 const openModal3 = document.querySelector('.hero__cta3');
